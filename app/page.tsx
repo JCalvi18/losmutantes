@@ -38,7 +38,7 @@ function Home() {
       <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl">
         <h2 className="text-2xl sm:text-3xl font-bold">Tour 2025</h2>
         <p className="text-base leading-relaxed">
-          Bienvenidos a la experiencia de Los Mutantes. Nuestra mezcla de ritmos y
+          Bienvenido a la experiencia de Los Mutantes. Nuestra mezcla de ritmos y
           energía en vivo llega a nuevas ciudades este año. Acompáñanos en un
           recorrido que no olvidarás.
         </p>
