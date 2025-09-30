@@ -1,103 +1,110 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Navbar, NavbarBrand, NavbarContent } from "@heroui/react";
+import { IntroSeen } from "./animation";
 
-export default function Home() {
+function Home() {
+  const [introSeen, setIntroSeen] = useState<boolean>(true);
+    
+
+  if (introSeen) {
+    return (
+      <IntroSeen handleEnter={()=>setIntroSeen(false)} />
+    );
+  }
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="min-h-dvh flex flex-col">
+      <Navbar maxWidth="full" className="bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b py-4 md:py-6">
+        <NavbarContent justify="start">
+          <NavbarBrand className="gap-2">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/globe.svg"
+              alt="Logo"
+              width={28}
+              height={28}
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+          </NavbarBrand>
+        </NavbarContent>
+        <NavbarContent justify="center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide">Los Mutantes</h1>
+        </NavbarContent>
+        <NavbarContent justify="end" />
+      </Navbar>
+
+      <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold">Tour 2025</h2>
+        <p className="text-base leading-relaxed">
+          Bienvenidos a la experiencia de Los Mutantes. Nuestra mezcla de ritmos y
+          energía en vivo llega a nuevas ciudades este año. Acompáñanos en un
+          recorrido que no olvidarás.
+        </p>
+
+        <div className="w-full aspect-video relative rounded-lg overflow-hidden border">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
             src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            alt="Band performing"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-contain bg-background"
+            priority
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </div>
+
+        <p className="text-base leading-relaxed">
+          Escucha nuestros últimos lanzamientos y únete a la comunidad. Nos
+          encanta ver nuevas caras en cada show.
+        </p>
+
+        <div className="flex flex-col items-center">
+          <h3 className="text-xl font-semibold mb-2">Fechas y lugares</h3>
+          <ul className="space-y-2">
+            {[
+              { city: "Madrid", date: "12 Oct 2025" },
+              { city: "Barcelona", date: "18 Oct 2025" },
+              { city: "Valencia", date: "25 Oct 2025" },
+              { city: "Sevilla", date: "01 Nov 2025" },
+            ].map(({ city, date }) => (
+              <li key={city} className="flex items-center justify-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 22s7-5.33 7-12a7 7 0 1 0-14 0c0 6.67 7 12 7 12Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                  <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                </svg>
+                <span className="text-center"><span className="font-medium">{city}</span> — {date}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <footer className="border-t mt-8">
+        <div className="container mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-6 flex flex-col items-center gap-3">
+          <span className="text-sm opacity-80">Los Mutantes</span>
+          <div className="flex items-center justify-center gap-6">
+            <Link href="https://facebook.com" target="_blank" aria-label="Facebook" title="Facebook" className="opacity-90 hover:opacity-100 transition-opacity">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d="M22 12.06C22 6.49 17.52 2 11.94 2 6.37 2 1.88 6.49 1.88 12.06c0 4.97 3.63 9.09 8.38 9.94v-7.03H7.9v-2.91h2.36v-2.22c0-2.34 1.39-3.63 3.52-3.63 1.02 0 2.09.18 2.09.18v2.3h-1.18c-1.17 0-1.53.73-1.53 1.48v1.89h2.61l-.42 2.91h-2.19V22c4.75-.85 8.38-4.97 8.38-9.94Z"/>
+              </svg>
+            </Link>
+            <Link href="https://instagram.com" target="_blank" aria-label="Instagram" title="Instagram" className="opacity-90 hover:opacity-100 transition-opacity">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm6.5-.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm-6.5 2A3 3 0 1 1 12 15a3 3 0 0 1 0-6Z"/>
+              </svg>
+            </Link>
+            <Link href="https://tiktok.com" target="_blank" aria-label="TikTok" title="TikTok" className="opacity-90 hover:opacity-100 transition-opacity">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d="M16 2a6.9 6.9 0 0 0 0 1.5c.21 2.07 1.9 3.88 3.97 4.14.35.05.7.05 1.03.05V11a8.33 8.33 0 0 1-5-1.74v6.02A6.73 6.73 0 1 1 9.5 8.7V11a3.84 3.84 0 1 0 2.5 3.6V2h4Z"/>
+              </svg>
+            </Link>
+          </div>
+          <p className="text-xs opacity-80 text-center">Síguenos en redes para novedades y preventas</p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
+
+export default Home;
