@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Los Mutantes",
-  description: "Tour 2025 y novedades",
+  description: "Teatro en Español",
 };
 
 export default function RootLayout({

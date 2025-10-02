@@ -5,6 +5,53 @@ import Carrousel from "./carrousel";
 import { IntroSeen } from "./animation";
 import Image from "next/image";
 import Link from "next/link";
+import { Button, Divider } from "@heroui/react";
+
+function PlaceDate({
+  city,
+  date,
+  theater,
+  mapsUrl,
+
+}: {
+  city: string
+  date: string
+  theater: string
+  mapsUrl: string
+}) {
+
+  const row = "flex flex-row items-center gap-2"
+
+  return (
+    <li key={city} className="flex flex-col items-center justify-center gap-2">
+      <Divider className="my-4" />
+      <div className={row}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
+        </svg>
+
+        <span className="font-medium">{city}</span>
+      </div>
+      <div className={row}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+
+        <Link href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-center hover:underline">
+          <span className="font-medium">{theater}</span>
+        </Link>
+      </div>
+      <div className={row}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+
+        <span className="font-medium">{date}</span>
+      </div>
+    </li>
+  )
+}
 
 function Home() {
   const [introSeen, setIntroSeen] = useState<boolean>(true);
@@ -29,7 +76,7 @@ function Home() {
   }
 
   return (
-    <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl">
+    <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl items-center">
       <h2 className="text-2xl sm:text-3xl font-bold">Tour 2025</h2>
       <p className="text-base leading-relaxed">
         La Divina Tragedia de Tomás Afán Muñoz (título original: La Divina Tragedia o La Maldita Comedia) es una parodia de la guerra. El drama se desarrolla en medio de una crisis política, el Ministerio de Defensa evalúa hacia dónde puede llevar la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresa contra el infierno. Sin embargo, esta guerra se dirige contra los intereses empresariales celestiales y conduce a una alianza sin precedentes entre el cielo y el infierno.
@@ -51,10 +98,16 @@ function Home() {
 
 
       <Carrousel images={galleryImages} className="w-full" />
+
+
+
+      <Button as={Link} href="/lamalditacomedia" variant="bordered" size="lg" className="flex font-bold text-white bg-red-800 p-6 justify-center w-64 rounded-xl align-self-center">Conoce más sobre la Obra</Button>
+
       <div className="flex flex-col items-center">
         <h3 className="text-xl font-semibold mb-2">Fechas y lugares</h3>
         <ul className="space-y-2">
           {[
+            { city: "Saarbrücken (Prueba General)", theater: "Universidad del Saarland", date: "7 Oct -- 6:00 PM", query: "Saarland University" },
             { city: "Sogamoso", theater: "Teatro Sogamoso", date: "14 Oct -- 6:00 PM", query: "Teatro Sogamoso" },
             { city: "Bogotá", theater: "Universida Pedagógica Nacional", date: "16 Oct -- 4:00 PM", query: "Saarland University" },
             { city: "Manizales", theater: "XX Festival FITU", date: "23 Oct -- 3:00PM", query: "Saarland University" },
@@ -62,19 +115,7 @@ function Home() {
           ].map(({ city, date, theater, query }) => {
             const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
             return (
-              <li key={city} className="flex items-center justify-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 22s7-5.33 7-12a7 7 0 1 0-14 0c0 6.67 7 12 7 12Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                  <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                <span className="font-medium">{city}</span>
-
-                <Link href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-center hover:underline">
-                  <span className="font-medium">{theater}</span>
-                </Link>
-
-                <span className="font-medium">{date}</span>
-              </li>
+              <PlaceDate key={`${city}`} city={city} theater={theater} date={date} mapsUrl={mapsUrl} />
             );
           })}
         </ul>

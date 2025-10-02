@@ -5,17 +5,17 @@ import Image from "next/image"
 
 import { CheckCircleIcon, SparklesIcon, UsersIcon, GlobeAltIcon } from "@heroicons/react/24/solid";
 
-// import { CheckCircleIcon, SparklesIcon, UsersIcon, GlobeAltIcon } from "@heroicons/react";
 
 export default function page() {
 
     const textNormalWhite = "text-base leading-relaxed text-slate-600 text-white"
+    const textParagraph = "text-base leading-relaxed"
 
     return (
         <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-bold">Los Mutantes e.V.</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">Sobre nosotros</h2>
             <Image
-                src="/nosotros.jpg"
+                src="/nosotros2.jpg"
                 alt="Band poster"
                 width={1600}
                 height={900}
@@ -24,10 +24,18 @@ export default function page() {
                 priority
             />
 
-            <p className="text-base leading-relaxed">
-                Somos Los Mutantes, la agrupación de teatro en español de la Universidad del Sarre en Saarbrücken. Desde 1999, trabajamos como una asociación registrada (e.V.), lo que nos permite organizar nuestras actividades culturales de manera profesional y abierta a toda la comunidad.
+            <p className={textParagraph}>
+                Los Mutantes somos un grupo de teatro amateur en español de la Universidad del Sarre fundado en 1999 gracias a una iniciativa estudiantil y con el apoyo del Departamento de Romanística.
             </p>
 
+            <p className={textParagraph}>
+                Desde entonces, no hemos dejado de estar activos y contribuimos de forma significativa a la oferta cultural de la Gran Región (Luxemburgo, Lorena, Sarre y Palatinado), incluyendo la creación del festival universitario transfronterizo de teatro *GrAFiTi*.
+            </p>
+
+
+            <p className={textParagraph}>
+                Somos parte de la Red Europea de Teatro Amateur en Español. Somos también una asociación registrada (e.V.), lo que nos permite organizar nuestras actividades culturales de manera profesional y abierta a toda la comunidad.
+            </p>
 
             <div>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6">¿Qué hacemos?</h2>
@@ -37,7 +45,7 @@ export default function page() {
                         <div>
                             <h3 className="text-white font-bold mb-6">Promover el teatro en español</h3>
                             <p className={textNormalWhite}>
-                                Ofrecemos obras en español, pensadas tanto para hispanohablantes como para público general (con subtítulos cuando es necesario).
+                                Ofrecemos obras en español, pensadas tanto para hispanohablantes como para público general. Con el objectivo de hacer teatro en Español en Alemania.
                             </p>
                         </div>
                     </li>
@@ -55,7 +63,7 @@ export default function page() {
                         <div>
                             <h3 className="text-white font-bold mb-6">Desarrollo artístico</h3>
                             <p className={textNormalWhite}>
-                                Cada miembro participa en actuación, dirección, escenografía, técnica y producción: somos un proyecto colectivo.
+                                Cada miembro puede participar en actuación, dirección, escenografía, técnica y producción: somos un proyecto colectivo.
                             </p>
                         </div>
                     </li>
