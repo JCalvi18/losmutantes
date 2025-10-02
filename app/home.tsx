@@ -107,15 +107,14 @@ function Home() {
         <h3 className="text-xl font-semibold mb-2">Fechas y lugares</h3>
         <ul className="space-y-2">
           {[
-            { city: "Saarbrücken (Prueba General)", theater: "Universidad del Saarland", date: "7 Oct -- 6:00 PM", query: "Saarland University" },
-            { city: "Sogamoso", theater: "Teatro Sogamoso", date: "14 Oct -- 6:00 PM", query: "Teatro Sogamoso" },
-            { city: "Bogotá", theater: "Universida Pedagógica Nacional", date: "16 Oct -- 4:00 PM", query: "Saarland University" },
-            { city: "Manizales", theater: "XX Festival FITU", date: "23 Oct -- 3:00PM", query: "Saarland University" },
+            { city: "Saarbrücken (Prueba General)", theater: "Universidad del Saarland", date: "7 Oct -- 7:00 PM", link: "https://maps.app.goo.gl/hHZgWYLw6xKoWy2P9" },
+            { city: "Sogamoso", theater: "Teatro Sogamoso", date: "14 Oct -- 6:00 PM", link: "https://maps.app.goo.gl/X9qD8Q7ya8h7KtoTA" },
+            { city: "Bogotá", theater: "Universida Pedagógica Nacional", date: "16 Oct -- 4:00 PM", link: "https://maps.app.goo.gl/otetUjoTjfszJ4tD9" },
+            { city: "Manizales", theater: "XX Festival FITU", date: "23 Oct -- 3:00PM", link: "https://maps.app.goo.gl/mWMdRGVD9KQhaqW39" },
 
-          ].map(({ city, date, theater, query }) => {
-            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+          ].map(({ city, date, theater, link }) => {
             return (
-              <PlaceDate key={`${city}`} city={city} theater={theater} date={date} mapsUrl={mapsUrl} />
+              <PlaceDate key={`${city}`} city={city} theater={theater} date={date} mapsUrl={link} />
             );
           })}
         </ul>
