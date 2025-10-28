@@ -1,10 +1,11 @@
 'use client'
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import { map } from 'lodash'
 
 import getUnicodeFlagIcon from 'country-flag-icons/unicode'
+import Carrousel from "@/app/carrousel"
 
 
 function Names({ title, description }: { title: string, description: string }) {
@@ -27,7 +28,21 @@ function Person({ name, flags }: { name: string, flags: string[] }) {
     )
 }
 
-export default function page() {
+export default function Page() {
+
+    const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const res = await fetch("/api/getMCimages", { cache: "no-store" });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (Array.isArray(data?.images)) setGalleryImages(data.images);
+            } catch { }
+        };
+        fetchImages();
+    }, []);
 
     const textParagraphBlack = "text-base leading-relaxed text-justify text-black"
 
@@ -41,6 +56,18 @@ export default function page() {
         ">
 
             <h1 className="text-orange-700 sm:text-3xl font-bold self-center">La Divina Tragedia o La Maldita Comedia</h1>
+
+            <Image
+                src="/maldita_comedia_galery/poster.jpg"
+                alt="Band poster"
+                width={100}
+                height={100}
+                sizes="(max-width: 1024px) 100vw, 768px"
+                className="w-full h-auto object-contain"
+                priority
+            />
+
+
             <h2 className="text-2xl sm:text-3xl font-bold">Sinópsis</h2>
 
             <p className={textParagraphBlack}>
@@ -125,6 +152,11 @@ export default function page() {
                 <Person name="Silvina Holender" flags={['AR', 'DE']} />
                 <Person name="Simon Vergara" flags={['CL']} />
             </div>
+
+            <h2 className="text-2xl sm:text-3xl font-bold text-black">Galería</h2>
+            <Carrousel images={galleryImages} className="w-full" />
+
+
         </section>
     )
 }

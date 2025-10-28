@@ -20,10 +20,10 @@ export default function SiteHeader() {
           />
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide text-black text-center">Los Mutantes</h1>
         </NavbarBrand>
-        <div className="w-full flex items-center justify-center gap-3 mt-2 w-full text-center">
+        <div className="w-full flex flex-row sm:flex-column items-center justify-center gap-3 mt-2 w-full text-center">
           <Button as={Link} href="/" variant="flat" size="lg" className="text-black">Inicio</Button>
+          <Button as={Link} href="/archivo" variant="flat" size="lg" className="text-black">Archivo</Button>
           <Button as={Link} href="/about" variant="flat" size="lg" className="text-black">Sobre nosotros</Button>
-
         </div>
       </NavbarContent>
       <NavbarContent justify="end" className="w-1/3" />

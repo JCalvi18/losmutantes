@@ -4,7 +4,7 @@ import path from "path";
 
 export async function GET() {
   try {
-    const imagesDir = path.join(process.cwd(), "public", "selected_images");
+    const imagesDir = path.join(process.cwd(), "public", "maldita_comedia_galery");
     const entries = await fs.promises.readdir(imagesDir, { withFileTypes: true });
     const files = entries
       .filter((e) => e.isFile())
@@ -13,7 +13,7 @@ export async function GET() {
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
     const images = files.map((name) => ({
-      src: `/selected_images/${name}`,
+      src: `/maldita_comedia_galery/${name}`,
       alt: name,
     }));
 

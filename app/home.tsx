@@ -1,11 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Carrousel from "./carrousel";
-import { IntroSeen } from "./animation";
-import Image from "next/image";
 import Link from "next/link";
-import { Button, Divider } from "@heroui/react";
+import { Divider } from "@heroui/react";
 
 function PlaceDate({
   city,
@@ -54,34 +50,29 @@ function PlaceDate({
 }
 
 function Home() {
-  const [introSeen, setIntroSeen] = useState<boolean>(true);
-  const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
+  // const [introSeen, setIntroSeen] = useState<boolean>(true);
+  // const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const res = await fetch("/api/selected-images", { cache: "no-store" });
-        if (!res.ok) return;
-        const data = await res.json();
-        if (Array.isArray(data?.images)) setGalleryImages(data.images);
-      } catch { }
-    };
-    fetchImages();
-  }, []);
+  // useEffect(() => {
+  //   const fetchImages = async () => {
+  //     try {
+  //       const res = await fetch("/api/selected-images", { cache: "no-store" });
+  //       if (!res.ok) return;
+  //       const data = await res.json();
+  //       if (Array.isArray(data?.images)) setGalleryImages(data.images);
+  //     } catch { }
+  //   };
+  //   fetchImages();
+  // }, []);
 
-  if (introSeen) {
-    return (
-      <IntroSeen handleEnter={() => setIntroSeen(false)} />
-    );
-  }
 
   return (
     <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl items-center">
-      <h2 className="text-2xl sm:text-3xl font-bold">Tour 2025</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold">Noche Informativa</h2>
       <p className="text-base leading-relaxed">
-        La Divina Tragedia de Tomás Afán Muñoz (título original: La Divina Tragedia o La Maldita Comedia) es una parodia de la guerra. El drama se desarrolla en medio de una crisis política, el Ministerio de Defensa evalúa hacia dónde puede llevar la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresa contra el infierno. Sin embargo, esta guerra se dirige contra los intereses empresariales celestiales y conduce a una alianza sin precedentes entre el cielo y el infierno.
+        Si vives en Saarbrücken y alguna vez soñaste con hacer teatro en español?
       </p>
-
+      {/* 
       <Image
         src="/poster.jpg"
         alt="Band poster"
@@ -90,35 +81,25 @@ function Home() {
         sizes="(max-width: 1024px) 100vw, 768px"
         className="w-full h-auto object-contain"
         priority
-      />
+      /> */}
 
       <p className="text-base leading-relaxed">
-        La obra muestra varios géneros (sátira política, fantasía y alegoría teológica…) se narra la lucha eterna entre el bien y el mal, adentrándonos en un ámbito sobrenatural, pero en esencia se explora temas absolutamente mundanos y terrenales. ¿Qué papel juega la democracia en un mundo donde el cielo y el infierno están aliados?
+        Tal vez para reconectarte con tus raíces, practicar el idioma o simplemente compartir con gente increíble que se atreve a hacer cosas loquísimas (como irse de gira por Latinoamérica o presentarse en festivales internacionales , además de preparar una obra distinta, cada año para el público del Saarland y del mundo!)
       </p>
 
+      <p className="text-base leading-relaxed">
+        No necesitas registrarte. ¡solo ven con curiosidad y muchas ganas!
+      </p>
 
-      <Carrousel images={galleryImages} className="w-full" />
+      <p className="text-base leading-relaxed">
+        Únete al mejor grupo de teatro en español de Alemania Te esperamos ❤️
+      </p>
 
+      <h3 className="text-xl font-semibold mb-2">Fecha y lugar</h3>
+      <PlaceDate key={'uniqueKey'} city={"Saarbrücken"} theater={"Universidad del Saarland"} date={'Martes 4 de noviembre 2025'} mapsUrl={"https://maps.app.goo.gl/hHZgWYLw6xKoWy2P9"} />
 
+      {/* <Carrousel images={galleryImages} className="w-full" /> */}
 
-      <Button as={Link} href="/lamalditacomedia" variant="bordered" size="lg" className="flex font-bold text-white bg-red-800 p-6 justify-center w-64 rounded-xl align-self-center">Conoce más sobre la Obra</Button>
-
-      <div className="flex flex-col items-center">
-        <h3 className="text-xl font-semibold mb-2">Fechas y lugares</h3>
-        <ul className="space-y-2">
-          {[
-            { city: "Saarbrücken (Prueba General)", theater: "Universidad del Saarland", date: "7 Oct -- 7:00 PM", link: "https://maps.app.goo.gl/hHZgWYLw6xKoWy2P9" },
-            { city: "Sogamoso", theater: "Teatro Sogamoso", date: "14 Oct -- 6:00 PM", link: "https://maps.app.goo.gl/X9qD8Q7ya8h7KtoTA" },
-            { city: "Bogotá", theater: "Universida Pedagógica Nacional", date: "16 Oct -- 4:00 PM", link: "https://maps.app.goo.gl/otetUjoTjfszJ4tD9" },
-            { city: "Manizales", theater: "XX Festival FITU", date: "23 Oct -- 3:00PM", link: "https://maps.app.goo.gl/mWMdRGVD9KQhaqW39" },
-
-          ].map(({ city, date, theater, link }) => {
-            return (
-              <PlaceDate key={`${city}`} city={city} theater={theater} date={date} mapsUrl={link} />
-            );
-          })}
-        </ul>
-      </div>
     </section>
   );
 }
