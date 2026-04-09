@@ -6,6 +6,7 @@ import { map } from 'lodash'
 
 import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import Carrousel from "@/app/carrousel"
+import { useLanguage } from "@/app/i18n/LanguageContext"
 
 
 function Names({ title, description }: { title: string, description: string }) {
@@ -30,6 +31,7 @@ function Person({ name, flags }: { name: string, flags: string[] }) {
 
 export default function Page() {
 
+    const { t } = useLanguage();
     const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
 
     useEffect(() => {
@@ -47,15 +49,15 @@ export default function Page() {
     const textParagraphBlack = "text-base leading-relaxed text-justify text-black"
 
     return (
-        <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl mt-2       
-            bg-gradient-to-b 
+        <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl mt-2
+            bg-gradient-to-b
             from-blue-100
-            to-red-600 
+            to-red-600
             rounded-lg shadow-xl
             text-black
         ">
 
-            <h1 className="text-orange-700 sm:text-3xl font-bold self-center">La Divina Tragedia o La Maldita Comedia</h1>
+            <h1 className="text-orange-700 sm:text-3xl font-bold self-center">{t.lamalditacomedia.title}</h1>
 
             <Image
                 src="/maldita_comedia_galery/poster.jpg"
@@ -68,62 +70,46 @@ export default function Page() {
             />
 
 
-            <h2 className="text-2xl sm:text-3xl font-bold">Sinópsis</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.synopsis_title}</h2>
 
-            <p className={textParagraphBlack}>
-                En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado.
-            </p>
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p1}</p>
 
-            <p className={textParagraphBlack}>
-                Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno.
-            </p>
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p2}</p>
 
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p3}</p>
 
-            <p className={textParagraphBlack}>
-                Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.
-            </p>
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p4}</p>
 
-            <p className={textParagraphBlack}>
-                En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales.
-            </p>
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p5}</p>
 
-            <p className={textParagraphBlack}>
-                En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado. Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno. Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.
-            </p>
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p6}</p>
 
+            <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p7}</p>
 
-            <p className={textParagraphBlack}>
-                En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales. ¿Qué papel juega la democracia en un mundo donde el Cielo y el Infierno hacen causa común?
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.lamalditacomedia.technical_title}</h2>
+            <Names title={t.lamalditacomedia.field_title} description="La Divina Tragedia o La Maldita Comedia" />
+            <Names title={t.lamalditacomedia.field_author} description="Tomás Afán Muñoz" />
+            <Names title={t.lamalditacomedia.field_genre} description="Drama balístico" />
+            <Names title={t.lamalditacomedia.field_duration} description="80 minutos" />
+            <Names title={t.lamalditacomedia.field_language} description="Español" />
 
-            <p className={textParagraphBlack}>
-                Toda semejanza con la realidad es pura coincidencia.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-bold text-black">Ficha Técnica</h2>
-            <Names title="Título" description="La Divina Tragedia o La Maldita Comedia" />
-            <Names title="Autor" description="Tomás Afán Muñoz" />
-            <Names title="Genero" description="Drama balístico" />
-            <Names title="Duración" description="80 minutos" />
-            <Names title="Idioma" description="Español" />
-
-            <Names title="Dirección" description="Cecilia Paladines" />
-            <Names title="Producción" description="Diego Nuñez, Alejo Olivero, Polina Stadnikova y Paolo Vega" />
-            <Names title="Asistencia de dirección" description="Jorge Calvimontes y Diego Nuñez" />
-            <Names title="Diseño de sonido" description="David Röttele" />
-            <Names title="Diseño de iluminación" description="Jorge Calvimontes y Alejo Olivero" />
-            <Names title="Vestuario y maquillaje" description="Silvina Holender, Anna Martiney y Polina Stadnikova" />
-            <Names title="Escenografía" description="Paolo Vega y Polina Stadnikova" />
-            <Names title="Asistencia técnica" description="Alejandro Olivero" />
-            <Names title="Diseño gráfico" description="Gabriela Durán" />
-            <Names title="Fotografía" description="David Weiss" />
-            <Names title="Subtítulos en Alemán, Francés e Inglés" description="Isa Anzaldo, Birgit Bellmann y Anastasia Fink" />
+            <Names title={t.lamalditacomedia.field_direction} description="Cecilia Paladines" />
+            <Names title={t.lamalditacomedia.field_production} description="Diego Nuñez, Alejo Olivero, Polina Stadnikova y Paolo Vega" />
+            <Names title={t.lamalditacomedia.field_assistant_direction} description="Jorge Calvimontes y Diego Nuñez" />
+            <Names title={t.lamalditacomedia.field_sound} description="David Röttele" />
+            <Names title={t.lamalditacomedia.field_lighting} description="Jorge Calvimontes y Alejo Olivero" />
+            <Names title={t.lamalditacomedia.field_costumes} description="Silvina Holender, Anna Martiney y Polina Stadnikova" />
+            <Names title={t.lamalditacomedia.field_scenography} description="Paolo Vega y Polina Stadnikova" />
+            <Names title={t.lamalditacomedia.field_technical} description="Alejandro Olivero" />
+            <Names title={t.lamalditacomedia.field_graphic} description="Gabriela Durán" />
+            <Names title={t.lamalditacomedia.field_photography} description="David Weiss" />
+            <Names title={t.lamalditacomedia.field_subtitles} description="Isa Anzaldo, Birgit Bellmann y Anastasia Fink" />
 
 
-            <h2 className="text-2xl sm:text-3xl font-bold">Elenco</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.cast_title}</h2>
             <Image
                 src="/nosotros.jpg"
-                alt="Elenco"
+                alt={t.lamalditacomedia.cast_title}
                 width={1600}
                 height={900}
                 sizes="(max-width: 1024px) 100vw, 768px"
@@ -153,7 +139,7 @@ export default function Page() {
                 <Person name="Simon Vergara" flags={['CL']} />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-black">Galería</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.lamalditacomedia.gallery_title}</h2>
             <Carrousel images={galleryImages} className="w-full" />
 
 

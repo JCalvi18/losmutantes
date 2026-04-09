@@ -2,8 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
+import { useLanguage } from "./i18n/LanguageContext";
 
 export default function SiteFooter() {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t mt-8">
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-6 flex flex-col items-center gap-3">
@@ -31,7 +34,7 @@ export default function SiteFooter() {
             </svg>
           </Link>
         </div>
-        <p className="text-xs opacity-80 text-center">Síguenos en redes para novedades</p>
+        <p className="text-xs opacity-80 text-center">{t.footer.follow}</p>
       </div>
     </footer>
   );

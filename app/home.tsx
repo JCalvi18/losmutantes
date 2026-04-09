@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Divider } from "@heroui/react";
+import { Button, Divider } from "@heroui/react";
+import { useLanguage } from "./i18n/LanguageContext";
+import { SHOWS } from "@/lib/shows";
 
 function PlaceDate({
   city,
@@ -50,6 +52,8 @@ function PlaceDate({
 }
 
 function Home() {
+  const { t } = useLanguage();
+
   // const [introSeen, setIntroSeen] = useState<boolean>(true);
   // const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
 
@@ -68,42 +72,37 @@ function Home() {
 
   return (
     <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl items-center">
-      <h2 className="text-2xl sm:text-3xl font-bold">Noche Informativa</h2>
-      <p className="text-base leading-relaxed">
-        Si vives en Saarbrücken y alguna vez soñaste con hacer teatro en español?
-      </p>
-      {/* 
-      <Image
-        src="/poster.jpg"
-        alt="Band poster"
-        width={1600}
-        height={900}
-        sizes="(max-width: 1024px) 100vw, 768px"
-        className="w-full h-auto object-contain"
-        priority
-      /> */}
+      <h2 className="text-2xl sm:text-3xl font-bold">{t.home.season}</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold">
+        {t.home.play_title}
+      </h2>
+      <div className="container mx-auto flex flex-col items-center">
+        <p className="text-base">{t.home.authors}</p>
+      </div>
 
-      <p className="text-base leading-relaxed">
-        Tal vez para reconectarte con tus raíces, practicar el idioma o simplemente compartir con gente increíble que se atreve a hacer cosas loquísimas (como irse de gira por Latinoamérica o presentarse en festivales internacionales , además de preparar una obra distinta, cada año para el público del Saarland y del mundo!)
-      </p>
+      <p>{t.home.description1}</p>
 
-      <p className="text-base leading-relaxed">
-        No necesitas registrarte. ¡solo ven con curiosidad y muchas ganas!
-      </p>
+      <p>{t.home.description2}</p>
 
-      <p className="text-base leading-relaxed">
-        Únete al mejor grupo de teatro en español de Alemania Te esperamos ❤️
-      </p>
+      {/* TODO: Add an animation here */}
 
-      <h3 className="text-xl font-semibold mb-2">Fecha y lugar</h3>
-      <PlaceDate key={'uniqueKey'} city={"Saarbrücken"} theater={"Universidad del Saarland"} date={'Martes 4 de noviembre 2025'} mapsUrl={"https://maps.app.goo.gl/hHZgWYLw6xKoWy2P9"} />
+      <p className="text-base leading-relaxed">{t.home.description3}</p>
 
-      {/* <Carrousel images={galleryImages} className="w-full" /> */}
+      <Button as={Link} href="/lamalditacomedia" variant="bordered" size="lg" className="flex font-bold text-white bg-red-800 p-6 justify-center w-64 rounded-xl align-self-center">{t.home.cta}</Button>
 
+      <div className="flex flex-col items-center">
+        <h3 className="text-xl font-semibold mb-2">{t.home.dates_title}</h3>
+        <ul className="space-y-2">
+          {SHOWS.map(({ city, date, theater, link }) => {
+            const theaterDisplay = theater === "university" ? t.home.university : theater;
+            return (
+              <PlaceDate key={`${city}`} city={city} theater={theaterDisplay} date={date} mapsUrl={link} />
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }
 
 export default Home;
-
-

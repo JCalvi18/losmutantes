@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { Button } from "@heroui/react";
+import { useLanguage } from "./i18n/LanguageContext";
 
 type CarrouselImage = {
   src: string;
@@ -22,6 +23,7 @@ export function Carrousel({
   intervalMs = 4000,
   className,
 }: CarrouselProps) {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const numImages = images.length;
@@ -62,7 +64,7 @@ export function Carrousel({
     return (
       <div className={className}>
         <div className="w-full aspect-video relative rounded-lg overflow-hidden border flex items-center justify-center text-sm opacity-70">
-          No images to display
+          {t.carrousel.no_images}
         </div>
       </div>
     );
