@@ -8,7 +8,7 @@ export default function SiteFooter() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t mt-8">
+    <footer className="border-t mt-8 text-white">
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-6 flex flex-col items-center gap-3">
         <span className="text-sm opacity-80">Los Mutantes</span>
         <div className="flex items-center justify-center gap-6">
