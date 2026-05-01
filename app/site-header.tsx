@@ -101,7 +101,7 @@ export default function SiteHeader() {
       <div className="hidden md:flex max-w-full mx-auto px-4 py-6 items-center">
         <div className="w-1/3" />
         <div className="w-1/3 flex flex-col items-center gap-2 text-center">
-          <div className="flex gap-3 items-center justify-center">
+          <div className="flex flex-col items-center gap-1">
             <Image src="/logo.png" alt="Logo" width={50} height={50} priority />
             <h1 className="text-3xl md:text-4xl font-semibold tracking-wide text-black">
               Los Mutantes
@@ -125,9 +125,9 @@ export default function SiteHeader() {
               <Button
                 key={lang}
                 size="sm"
-                variant={language === lang ? "primary" : "ghost"}
+                variant="ghost"
                 onPress={() => setLanguage(lang)}
-                className="text-xs uppercase min-w-0 px-2"
+                className={`text-xs uppercase min-w-0 px-2 ${language === lang ? "bg-red-600 text-black font-bold hover:bg-red-700" : ""}`}
               >
                 {lang.toUpperCase()}
               </Button>
