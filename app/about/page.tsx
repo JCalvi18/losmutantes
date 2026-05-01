@@ -14,7 +14,7 @@ export default function Page() {
     const textParagraph = "text-base leading-relaxed"
 
     return (
-        <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl">
+        <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl text-white">
             <h2 className="text-2xl sm:text-3xl font-bold">{t.about.title}</h2>
             <Image
                 src="/nosotros2.jpg"
