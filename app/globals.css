@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
   --background: #ffffff;
@@ -15,7 +16,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #171717;
   }
 }
 
@@ -36,10 +37,10 @@ body {
   -webkit-mask:
     radial-gradient(40px at 40px 100%, #000 98%, transparent 102%) var(--wave-x, 0px) 0 / 80px 100% repeat-x,
     linear-gradient(#000 0 0);
-          mask:
+  mask:
     radial-gradient(40px at 40px 100%, #000 98%, transparent 102%) var(--wave-x, 0px) 0 / 80px 100% repeat-x,
     linear-gradient(#000 0 0);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08) inset;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) inset;
   z-index: 5;
 }
 
@@ -53,7 +54,7 @@ body {
   -webkit-mask:
     radial-gradient(44px at 44px 0, #000 98%, transparent 102%) calc(-1 * var(--wave-x, 0px)) 0 / 88px 100% repeat-x,
     linear-gradient(#000 0 0);
-          mask:
+  mask:
     radial-gradient(44px at 44px 0, #000 98%, transparent 102%) calc(-1 * var(--wave-x, 0px)) 0 / 88px 100% repeat-x,
     linear-gradient(#000 0 0);
   box-shadow: 0 -10px 30px rgba(239, 68, 68, 0.35) inset;
@@ -61,15 +62,39 @@ body {
 }
 
 @keyframes waveBob {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, 6px, 0); }
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
 }
 
 @keyframes waveFlicker {
-  0%, 100% { transform: translate3d(0, 0, 0); filter: brightness(1); }
-  25% { transform: translate3d(0, -4px, 0); filter: brightness(1.05); }
-  50% { transform: translate3d(0, -2px, 0); filter: brightness(1.1); }
-  75% { transform: translate3d(0, -5px, 0); filter: brightness(1.05); }
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    filter: brightness(1);
+  }
+
+  25% {
+    transform: translate3d(0, -4px, 0);
+    filter: brightness(1.05);
+  }
+
+  50% {
+    transform: translate3d(0, -2px, 0);
+    filter: brightness(1.1);
+  }
+
+  75% {
+    transform: translate3d(0, -5px, 0);
+    filter: brightness(1.05);
+  }
 }
 
 /* Register custom property so it can animate */
@@ -80,11 +105,18 @@ body {
 }
 
 @keyframes waveScroll {
-  to { --wave-x: 80px; }
+  to {
+    --wave-x: 80px;
+  }
 }
 
-.wave-animate-top { animation: waveScroll 6s linear infinite, waveBob 7s ease-in-out infinite; }
-.wave-animate-bottom { animation: waveScroll 4.5s linear infinite reverse, waveFlicker 3.5s ease-in-out infinite; }
+.wave-animate-top {
+  animation: waveScroll 6s linear infinite, waveBob 7s ease-in-out infinite;
+}
+
+.wave-animate-bottom {
+  animation: waveScroll 4.5s linear infinite reverse, waveFlicker 3.5s ease-in-out infinite;
+}
 
 /* SVG-based animated clouds (top) and flames (bottom) */
 .clouds-svg {
@@ -94,7 +126,8 @@ body {
   height: 160px;
   z-index: 6;
 }
-.clouds-svg > svg {
+
+.clouds-svg>svg {
   width: 200%;
   height: 100%;
   display: block;
@@ -108,12 +141,22 @@ body {
   height: 170px;
   z-index: 6;
 }
-.flames-svg > svg {
+
+.flames-svg>svg {
   width: 200%;
   height: 100%;
   display: block;
   animation: flamesMove 6s linear infinite reverse;
 }
 
-@keyframes cloudsMove { to { transform: translateX(-50%); } }
-@keyframes flamesMove { to { transform: translateX(-50%); } }
+@keyframes cloudsMove {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes flamesMove {
+  to {
+    transform: translateX(-50%);
+  }
+}

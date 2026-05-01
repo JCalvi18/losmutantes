@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button, Divider } from "@heroui/react";
+import { Separator } from "@heroui/react";
 import { useLanguage } from "./i18n/LanguageContext";
 import { SHOWS } from "@/lib/shows";
 
@@ -22,7 +22,7 @@ function PlaceDate({
 
   return (
     <li key={city} className="flex flex-col items-center justify-center gap-2">
-      <Divider className="my-4" />
+      <Separator className="my-4" />
       <div className={row}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
@@ -71,7 +71,7 @@ function Home() {
 
 
   return (
-    <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl items-center">
+    <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl items-center text-white">
       <h2 className="text-2xl sm:text-3xl font-bold">{t.home.season}</h2>
       <h2 className="text-2xl sm:text-3xl font-bold">
         {t.home.play_title}
@@ -84,11 +84,9 @@ function Home() {
 
       <p>{t.home.description2}</p>
 
-      {/* TODO: Add an animation here */}
-
       <p className="text-base leading-relaxed">{t.home.description3}</p>
 
-      <Button as={Link} href="/lamalditacomedia" variant="bordered" size="lg" className="flex font-bold text-white bg-red-800 p-6 justify-center w-64 rounded-xl align-self-center">{t.home.cta}</Button>
+      {/* <Link href="/lamalditacomedia" className="flex font-bold text-white bg-red-800 p-6 justify-center w-64 rounded-xl text-lg">{t.home.cta}</Link> */}
 
       <div className="flex flex-col items-center">
         <h3 className="text-xl font-semibold mb-2">{t.home.dates_title}</h3>
@@ -96,7 +94,7 @@ function Home() {
           {SHOWS.map(({ city, date, theater, link }) => {
             const theaterDisplay = theater === "university" ? t.home.university : theater;
             return (
-              <PlaceDate key={`${city}`} city={city} theater={theaterDisplay} date={date} mapsUrl={link} />
+              <PlaceDate key={`${date}-${city}`} city={city} theater={theaterDisplay} date={date} mapsUrl={link} />
             );
           })}
         </ul>

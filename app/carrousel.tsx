@@ -88,9 +88,8 @@ export function Carrousel({
         <div className="absolute inset-y-0 left-0 flex items-center p-2">
           <Button
             size="sm"
-            radius="full"
-            variant="flat"
-            className="pointer-events-auto bg-background/70"
+            variant="ghost"
+            className="pointer-events-auto rounded-full bg-background/70"
             onPress={prev}
             aria-label="Previous image"
           >
@@ -100,9 +99,8 @@ export function Carrousel({
         <div className="absolute inset-y-0 right-0 flex items-center p-2">
           <Button
             size="sm"
-            radius="full"
-            variant="flat"
-            className="pointer-events-auto bg-background/70"
+            variant="ghost"
+            className="pointer-events-auto rounded-full bg-background/70"
             onPress={next}
             aria-label="Next image"
           >

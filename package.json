@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@heroui/react": "^2.8.4",
+    "@heroui/react": "^3.0.2",
+    "@heroui/styles": "^3.0.2",
     "@paypal/react-paypal-js": "^9.1.1",
     "@types/lodash": "^4.17.20",
     "@types/nodemailer": "^8.0.0",
@@ -21,7 +22,8 @@
     "next": "15.5.9",
     "nodemailer": "^8.0.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
