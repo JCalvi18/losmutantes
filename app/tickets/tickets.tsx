@@ -1,0 +1,269 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Label,
+  TextField,
+  Select,
+  ListBox,
+  Modal,
+} from "@heroui/react";
+import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useLanguage } from "@/app/i18n/LanguageContext";
+import { SHOWS, getTicketPrice, Show } from "@/lib/shows";
+
+const TODAY = new Date().toISOString().split("T")[0];
+
+function getTheaterDisplay(theaterKey: string, universityName: string): string {
+  return theaterKey === "university" ? universityName : theaterKey;
+}
+
+export default function Tickets() {
+  const { t } = useLanguage();
+  const [selectedShowIso, setSelectedShowIso] = useState<string>("");
+  const [ticketCount, setTicketCount] = useState(1);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isStudent, setIsStudent] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [reservationId, setReservationId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const futureShows = useMemo(
+    () => SHOWS.filter((s) => s.isoDate >= TODAY),
+    []
+  );
+
+  const show: Show | undefined = futureShows.find(
+    (s) => s.isoDate === selectedShowIso
+  );
+  const isDayOf = show?.isoDate === TODAY;
+  const pricePerTicket = show ? getTicketPrice(isStudent, isDayOf) : 0;
+  const total = ticketCount * pricePerTicket;
+
+  const tierLabel = show
+    ? isStudent
+      ? isDayOf ? t.tickets.tier_student_day_of : t.tickets.tier_student_early
+      : isDayOf ? t.tickets.tier_standard_day_of : t.tickets.tier_standard_early
+    : "";
+
+  const isFormValid =
+    !!show && !!name.trim() && email.includes("@") && ticketCount >= 1;
+
+  const handleReservation = async (paypalOrderId: string) => {
+    setIsLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          show: {
+            city: show!.city,
+            theater: show!.theater,
+            date: show!.date,
+            isoDate: show!.isoDate,
+          },
+          tickets: ticketCount,
+          isStudent,
+          paypalOrderId,
+        }),
+      });
+      if (!res.ok) throw new Error("Reservation failed");
+      const data = await res.json();
+      setReservationId(data.reservationId);
+      setIsConfirmed(true);
+    } catch {
+      setError(t.tickets.error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setIsConfirmed(false);
+    setReservationId("");
+    setSelectedShowIso("");
+    setTicketCount(1);
+    setName("");
+    setEmail("");
+    setIsStudent(false);
+  };
+
+  return (
+    <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-xl">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center">
+        {t.tickets.title}
+      </h2>
+
+      <div className="flex w-full flex-wrap flex-col gap-4 bg-white p-16 rounded-2xl text-black [--foreground:#171717]">
+        {futureShows.length === 0 ? (
+          <p className="text-center text-gray-500">{t.tickets.no_shows}</p>
+        ) : (
+          <>
+            <Select
+              className="max-w-xs text-black"
+              placeholder={t.tickets.select_show}
+              value={selectedShowIso}
+              onChange={(value) => setSelectedShowIso(value as string)}
+            >
+              <Label>{t.tickets.select_show}</Label>
+              <Select.Trigger>
+                <Select.Value />
+                <Select.Indicator />
+              </Select.Trigger>
+              <Select.Popover>
+                <ListBox>
+                  {futureShows.map((s) => (
+                    <ListBox.Item
+                      key={s.isoDate}
+                      id={s.isoDate}
+                      textValue={`${s.date} — ${getTheaterDisplay(s.theater, t.home.university)}`}
+                    >
+                      {s.date} — {getTheaterDisplay(s.theater, t.home.university)}
+                      <ListBox.ItemIndicator />
+                    </ListBox.Item>
+                  ))}
+                </ListBox>
+              </Select.Popover>
+            </Select>
+
+            <TextField
+              className="max-w-xs"
+              onChange={(v) => {
+                const n = parseInt(v, 10);
+                if (!isNaN(n) && n >= 1 && n <= 10) setTicketCount(n);
+              }}
+            >
+              <Label>{t.tickets.ticket_count}</Label>
+              <Input
+                type="number"
+                min={1}
+                max={10}
+                value={ticketCount.toString()}
+              />
+            </TextField>
+
+            <Checkbox isSelected={isStudent} onChange={setIsStudent}>
+              <Checkbox.Control>
+                <Checkbox.Indicator />
+              </Checkbox.Control>
+              <Checkbox.Content>
+                <Label>{t.tickets.is_student}</Label>
+              </Checkbox.Content>
+            </Checkbox>
+
+            <TextField className="max-w-xs" onChange={setName}>
+              <Label>{t.tickets.your_name}</Label>
+              <Input value={name} />
+            </TextField>
+
+            <TextField className="max-w-xs" onChange={setEmail}>
+              <Label>{t.tickets.your_email}</Label>
+              <Input type="email" value={email} />
+            </TextField>
+
+            {show && (
+              <div className="flex justify-between items-center py-2 px-1 border-t">
+                <div>
+                  <p className="text-lg font-semibold">{t.tickets.total}</p>
+                  <p className="text-xs text-gray-500">
+                    {t.tickets.price_per_ticket}: €{pricePerTicket} ({tierLabel})
+                  </p>
+                </div>
+                <span className="text-2xl font-bold">€{total.toFixed(2)}</span>
+              </div>
+            )}
+
+            {!isFormValid && (
+              <p className="text-sm text-gray-500 text-center">
+                {t.tickets.complete_form}
+              </p>
+            )}
+
+            <PayPalButtons
+              disabled={!isFormValid || isLoading}
+              forceReRender={[total, show?.isoDate, ticketCount]}
+              createOrder={(_data, actions) =>
+                actions.order.create({
+                  intent: "CAPTURE",
+                  purchase_units: [
+                    {
+                      amount: {
+                        currency_code: "EUR",
+                        value: total.toFixed(2),
+                      },
+                      description: show
+                        ? `${ticketCount}x ${show.city} ${show.date}`
+                        : "",
+                    },
+                  ],
+                })
+              }
+              onApprove={async (data, actions) => {
+                await actions.order!.capture();
+                // await handleReservation(data.orderID);
+              }}
+              onError={(err) => {
+                console.error("PayPal error:", err);
+                setError(t.tickets.error);
+              }}
+            />
+
+            {error && (
+              <p className="text-sm text-red-600 text-center">{error}</p>
+            )}
+          </>
+        )}
+      </div>
+
+      <Modal.Backdrop isOpen={isConfirmed} onOpenChange={() => { }}>
+        <Modal.Container>
+          <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Heading className="text-green-700">
+                {t.tickets.confirmation_title}
+              </Modal.Heading>
+            </Modal.Header>
+            <Modal.Body>
+              <p>{t.tickets.confirmation_body}</p>
+              <div className="mt-4 space-y-1 text-sm">
+                <p>
+                  <strong>{t.tickets.show_label}:</strong> {show?.city}
+                </p>
+                <p>
+                  <strong>{t.tickets.date_label}:</strong> {show?.date}
+                </p>
+                <p>
+                  <strong>{t.tickets.ticket_count}:</strong> {ticketCount} × €{pricePerTicket} ({tierLabel})
+                </p>
+                <p>
+                  <strong>{t.tickets.total}:</strong> €{total.toFixed(2)}
+                </p>
+                <p>
+                  <strong>{t.tickets.booking_id}:</strong>{" "}
+                  <span className="font-mono text-xs">{reservationId}</span>
+                </p>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="primary"
+                onPress={handleReset}
+                className="bg-red-800 text-white"
+              >
+                {t.tickets.book_another}
+              </Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </Modal.Container>
+      </Modal.Backdrop>
+    </section>
+  );
+}

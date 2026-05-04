@@ -29,6 +29,7 @@ export default function SiteHeader() {
     { href: "/", label: t.nav.home },
     { href: "/archivo", label: t.nav.archive },
     { href: "/about", label: t.nav.about },
+    { href: "/tickets", label: t.nav.tickets },
   ];
 
   return (

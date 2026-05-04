@@ -10,14 +10,14 @@ type ProvidersProps = {
 
 export default function Providers({ children }: ProvidersProps) {
   return (
-    // <PayPalScriptProvider
-    //   options={{
-    //     clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
-    //     currency: "USD",
-    //     "disable-funding": "sepa,card",
-    //   }}
-    // >
-    <LanguageProvider>{children}</LanguageProvider>
-    // </PayPalScriptProvider>
+    <PayPalScriptProvider
+      options={{
+        clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
+        currency: "EUR",
+        "disable-funding": "sepa,card,paylater",
+      }}
+    >
+      <LanguageProvider>{children}</LanguageProvider>
+    </PayPalScriptProvider>
   );
 }
