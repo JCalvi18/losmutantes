@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image";
 import Link from "next/link";
+import { ASSETS } from "@/lib/assets";
 
 export default function Page() {
 
@@ -13,7 +14,7 @@ export default function Page() {
         ">
             <Link href={'/archivo/lamalditacomedia'} target="_blank" rel="noopener noreferrer" className="text-center hover:underline">
                 <Image
-                    src="/maldita_comedia_galery/poster.jpg"
+                    src={ASSETS.mcPoster}
                     alt="La maldita comedia"
                     width={1600}
                     height={900}

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@heroui/react";
+import { ASSETS } from "@/lib/assets";
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useLanguage, Language } from "./i18n/LanguageContext";
 
@@ -51,7 +52,7 @@ export default function SiteHeader() {
 
         {/* Logo + title stacked */}
         <div className="flex flex-col items-center gap-1">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
+          <Image src={ASSETS.logo} alt="Logo" width={40} height={40} priority />
           <h1 className="text-lg font-semibold tracking-wide text-black">
             Los Mutantes
           </h1>
@@ -103,7 +104,7 @@ export default function SiteHeader() {
         <div className="w-1/3" />
         <div className="w-1/3 flex flex-col items-center gap-2 text-center">
           <div className="flex flex-col items-center gap-1">
-            <Image src="/logo.png" alt="Logo" width={50} height={50} priority />
+            <Image src={ASSETS.logo} alt="Logo" width={50} height={50} priority />
             <h1 className="text-3xl md:text-4xl font-semibold tracking-wide text-black">
               Los Mutantes
             </h1>

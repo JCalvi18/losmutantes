@@ -7,6 +7,7 @@ import { map } from 'lodash'
 import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import Carrousel from "@/app/carrousel"
 import { useLanguage } from "@/app/i18n/LanguageContext"
+import { ASSETS } from "@/lib/assets"
 
 
 function Names({ title, description }: { title: string, description: string }) {
@@ -60,7 +61,7 @@ export default function Page() {
             <h1 className="text-orange-700 sm:text-3xl font-bold self-center">{t.lamalditacomedia.title}</h1>
 
             <Image
-                src="/maldita_comedia_galery/poster.jpg"
+                src={ASSETS.mcPoster}
                 alt="Band poster"
                 width={100}
                 height={100}
@@ -108,7 +109,7 @@ export default function Page() {
 
             <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.cast_title}</h2>
             <Image
-                src="/nosotros.jpg"
+                src={ASSETS.nosotros}
                 alt={t.lamalditacomedia.cast_title}
                 width={1600}
                 height={900}
