@@ -11,6 +11,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-russo: var(--font-russo-one);
+  --font-antonio: var(--font-antonio);
 }
 
 @media (prefers-color-scheme: dark) {
