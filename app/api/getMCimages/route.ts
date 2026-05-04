@@ -3,7 +3,7 @@ import { list } from "@vercel/blob";
 
 export async function GET() {
   try {
-    const { blobs } = await list({ prefix: "maldita_comedia_galery/" });
+    const { blobs } = await list({ prefix: "malditaComedia/galery" });
     const images = blobs
       .filter((b) => /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(b.pathname))
       .sort((a, b) =>
