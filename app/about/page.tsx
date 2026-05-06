@@ -5,6 +5,7 @@ import Image from "next/image"
 
 import { CheckCircleIcon, SparklesIcon, UsersIcon, GlobeAltIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "../i18n/LanguageContext";
+import { ASSETS } from "@/lib/assets";
 
 
 export default function Page() {
@@ -17,7 +18,7 @@ export default function Page() {
         <section className="container mx-auto flex-1 px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6 max-w-3xl text-white">
             <h2 className="text-2xl sm:text-3xl font-bold">{t.about.title}</h2>
             <Image
-                src="/nosotros3.jpg"
+                src={ASSETS.nosotros3}
                 alt="Band poster"
                 width={1600}
                 height={900}

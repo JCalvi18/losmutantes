@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Russo_One, Antonio } from "next/font/google";
+import { Geist, Geist_Mono, Russo_One, Antonio, Bebas_Neue } from "next/font/google";
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
 import "./globals.css";
@@ -27,6 +27,12 @@ const antonio = Antonio({
   subsets: ["latin"],
 });
 
+
+const bebasNeue = Antonio({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Los Mutantes",
   description: "Teatro en Español",
@@ -40,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${russoOne.variable} ${antonio.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${russoOne.variable} ${antonio.variable} ${bebasNeue.variable} antialiased`}
       >
         <Providers>
           <SiteHeader />

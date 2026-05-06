@@ -13,6 +13,7 @@
   --font-mono: var(--font-geist-mono);
   --font-russo: var(--font-russo-one);
   --font-antonio: var(--font-antonio);
+  --font-bebas: var(--font-bebas-neue);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -109,7 +109,7 @@ export default function Page() {
 
             <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.cast_title}</h2>
             <Image
-                src={ASSETS.nosotros}
+                src={ASSETS.mcNosotros}
                 alt={t.lamalditacomedia.cast_title}
                 width={1600}
                 height={900}
