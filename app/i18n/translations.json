@@ -42,21 +42,13 @@
       "collaboration_title": "Colaboración y expansión",
       "collaboration_desc": "Participaremos en festivales y giras, y colaboraremos con otros grupos para tejer redes culturales internacionales."
     },
-    "lamalditacomedia": {
-      "title": "La Divina Tragedia o La Maldita Comedia",
+    "play": {
       "synopsis_title": "Sinopsis",
-      "synopsis_p1": "En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado.",
-      "synopsis_p2": "Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno.",
-      "synopsis_p3": "Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.",
-      "synopsis_p4": "En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales.",
-      "synopsis_p5": "En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado. Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno. Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.",
-      "synopsis_p6": "En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales. ¿Qué papel juega la democracia en un mundo donde el Cielo y el Infierno hacen causa común?",
-      "synopsis_p7": "Toda semejanza con la realidad es pura coincidencia.",
       "technical_title": "Ficha Técnica",
       "cast_title": "Elenco",
       "gallery_title": "Galería",
       "field_title": "Título",
-      "field_author": "Autor",
+      "field_author": "Autores",
       "field_genre": "Género",
       "field_duration": "Duración",
       "field_language": "Idioma",
@@ -67,10 +59,34 @@
       "field_lighting": "Diseño de iluminación",
       "field_costumes": "Vestuario y maquillaje",
       "field_scenography": "Escenografía",
+      "field_choreography": "Dirección Coreografia",
       "field_technical": "Asistencia técnica",
       "field_graphic": "Diseño gráfico",
       "field_photography": "Fotografía",
-      "field_subtitles": "Subtítulos en Alemán, Francés e Inglés"
+      "field_subtitles": "Subtítulos"
+    },
+    "lamalditacomedia": {
+      "title": "La Divina Tragedia o La Maldita Comedia",
+      "synopsis_p1": "En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado.",
+      "synopsis_p2": "Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno.",
+      "synopsis_p3": "Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.",
+      "synopsis_p4": "En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales.",
+      "synopsis_p5": "En plena crisis política, el Ministerio de Defensa evalúa hacia dónde puede conducir la democracia. Los asesores barajan las cartas de las tiranías y descubren sus recursos naturales. Debido al número de votantes afines, se declara un ataque sorpresivo contra el Infierno, y el Diablo es capturado. Sin embargo, esta guerra atenta contra los intereses corporativos celestiales y da lugar a una alianza sin precedentes entre el Cielo y el Infierno. Estalla una batalla nunca vista entre la Tierra y el Infierno. Tras el fracaso celestial de acabar con la tiranía subterránea, un país sueña con promover la democracia y, si es necesario, liberar a las almas allí encarceladas. De pronto, el Infierno es invadido.",
+      "synopsis_p6": "En esta parodia de los clichés de varios géneros (sátira política, fantasía y alegoría teológica), se narra la eterna lucha entre el bien y el mal, que se adentra en lo sobrenatural, pero que, en el fondo, explora temas totalmente humanos y terrenales. ¿Qué papel juega la democracia en un mundo donde el Cielo y el Infierno hacen causa común?",
+      "synopsis_p7": "Toda semejanza con la realidad es pura coincidencia."
+    },
+    "laberinto": {
+      "title": "Laberinto",
+      "synopsis_p1": "La traición y el engaño en las relaciones humanas: ese es el hilo conductor que une cinco obras de teatro breves bajo el lema «El laberinto del engaño».",
+      "synopsis_p2": "LOS MUTANTES nos llevan esta vez a un laberinto de situaciones diversas, en las que los protagonistas engañan a otros y son engañados a su vez: Un amante despechado que quiere vengarse con una broma de mal gusto y al final solo causa estragos, un hombre que se pierde en un laberinto de ficción y realidad, dos hermanas que compiten por el mismo hombre y al final ambas lo pierden, un chico cuya relación tierna y erótica con las plantas del jardín de sus padres es brutalmente reprimida por ellos; dos amigos que se enfrentan (o se dejan enfrentar) entre sí para conquistar a su jefa, solo para terminar ambos como perdedores…",
+      "synopsis_p3": "Un colorido caleidoscopio de los abismos humanos, en el que, al mismo tiempo, brota la tenue esperanza de que, a pesar de todo, la reconciliación sea posible.",
+      "authors": "Hugo de Salcedo · Alejo Olivero · Marina Wainer",
+      "gender": "Collección de mini obras",
+      "duration": "90 minutos",
+      "language": "Español"
+    },
+    "sponsors": {
+      "title": "Gracias a nuestros patrocinadores"
     },
     "carrousel": {
       "no_images": "No hay imágenes para mostrar"
@@ -87,7 +103,8 @@
       "your_name": "Tu nombre",
       "your_email": "Tu correo electrónico",
       "total": "Total",
-      "complete_form": "Completa el formulario para continuar con el pago",
+      "complete_form": "Completa el formulario para reservar tu entrada",
+      "reserve_button": "Reservar",
       "confirmation_title": "¡Reserva confirmada!",
       "confirmation_body": "Hemos recibido tu reserva y recibirás un correo de confirmación en breve.",
       "show_label": "Función",
@@ -147,21 +164,13 @@
       "collaboration_title": "Collaboration and expansion",
       "collaboration_desc": "We will participate in festivals and tours, and collaborate with other groups to build international cultural networks."
     },
-    "lamalditacomedia": {
-      "title": "The Divine Tragedy or The Damned Comedy",
+    "play": {
       "synopsis_title": "Synopsis",
-      "synopsis_p1": "In the midst of a political crisis, the Ministry of Defense evaluates where democracy can lead. Advisors shuffle the cards of tyrannies and discover their natural resources. Due to the number of sympathetic voters, a surprise attack against Hell is declared, and the Devil is captured.",
-      "synopsis_p2": "However, this war threatens celestial corporate interests and gives rise to an unprecedented alliance between Heaven and Hell.",
-      "synopsis_p3": "An unprecedented battle erupts between Earth and Hell. After Heaven's failure to end the underground tyranny, a country dreams of promoting democracy and, if necessary, liberating the souls imprisoned there. Suddenly, Hell is invaded.",
-      "synopsis_p4": "In this parody of the clichés of various genres (political satire, fantasy and theological allegory), the eternal struggle between good and evil is narrated, venturing into the supernatural, but ultimately exploring entirely human and earthly themes.",
-      "synopsis_p5": "In the midst of a political crisis, the Ministry of Defense evaluates where democracy can lead. Advisors shuffle the cards of tyrannies and discover their natural resources. Due to the number of sympathetic voters, a surprise attack against Hell is declared, and the Devil is captured. However, this war threatens celestial corporate interests and gives rise to an unprecedented alliance between Heaven and Hell. An unprecedented battle erupts between Earth and Hell. After Heaven's failure to end the underground tyranny, a country dreams of promoting democracy and, if necessary, liberating the souls imprisoned there. Suddenly, Hell is invaded.",
-      "synopsis_p6": "In this parody of the clichés of various genres (political satire, fantasy and theological allegory), the eternal struggle between good and evil is narrated, venturing into the supernatural, but ultimately exploring entirely human and earthly themes. What role does democracy play in a world where Heaven and Hell join forces?",
-      "synopsis_p7": "Any resemblance to reality is purely coincidental.",
       "technical_title": "Technical Sheet",
       "cast_title": "Cast",
       "gallery_title": "Gallery",
       "field_title": "Title",
-      "field_author": "Author",
+      "field_author": "Authors",
       "field_genre": "Genre",
       "field_duration": "Duration",
       "field_language": "Language",
@@ -172,10 +181,34 @@
       "field_lighting": "Lighting Design",
       "field_costumes": "Costumes and Makeup",
       "field_scenography": "Set Design",
+      "field_choreography": "Choreography Direction",
       "field_technical": "Technical Assistance",
       "field_graphic": "Graphic Design",
       "field_photography": "Photography",
-      "field_subtitles": "Subtitles in German, French and English"
+      "field_subtitles": "Subtitles"
+    },
+    "lamalditacomedia": {
+      "title": "The Divine Tragedy or The Damned Comedy",
+      "synopsis_p1": "In the midst of a political crisis, the Ministry of Defense evaluates where democracy can lead. Advisors shuffle the cards of tyrannies and discover their natural resources. Due to the number of sympathetic voters, a surprise attack against Hell is declared, and the Devil is captured.",
+      "synopsis_p2": "However, this war threatens celestial corporate interests and gives rise to an unprecedented alliance between Heaven and Hell.",
+      "synopsis_p3": "An unprecedented battle erupts between Earth and Hell. After Heaven's failure to end the underground tyranny, a country dreams of promoting democracy and, if necessary, liberating the souls imprisoned there. Suddenly, Hell is invaded.",
+      "synopsis_p4": "In this parody of the clichés of various genres (political satire, fantasy and theological allegory), the eternal struggle between good and evil is narrated, venturing into the supernatural, but ultimately exploring entirely human and earthly themes.",
+      "synopsis_p5": "In the midst of a political crisis, the Ministry of Defense evaluates where democracy can lead. Advisors shuffle the cards of tyrannies and discover their natural resources. Due to the number of sympathetic voters, a surprise attack against Hell is declared, and the Devil is captured. However, this war threatens celestial corporate interests and gives rise to an unprecedented alliance between Heaven and Hell. An unprecedented battle erupts between Earth and Hell. After Heaven's failure to end the underground tyranny, a country dreams of promoting democracy and, if necessary, liberating the souls imprisoned there. Suddenly, Hell is invaded.",
+      "synopsis_p6": "In this parody of the clichés of various genres (political satire, fantasy and theological allegory), the eternal struggle between good and evil is narrated, venturing into the supernatural, but ultimately exploring entirely human and earthly themes. What role does democracy play in a world where Heaven and Hell join forces?",
+      "synopsis_p7": "Any resemblance to reality is purely coincidental."
+    },
+    "laberinto": {
+      "title": "Labyrinth",
+      "synopsis_p1": "Betrayal and deception in human relationships—that is the common thread linking five short plays under the theme The Labyrinth of Deception",
+      "synopsis_p2": "This time, LOS MUTANTES lead us into a labyrinth of diverse scenarios in which the protagonists deceive others only to be deceived themselves: A spurned lover who seeks revenge with a cruel prank but ends up causing nothing but trouble, a man who loses himself in a labyrinth of fiction and reality, two sisters vying for the same man and ultimately both losing him, a boy whose tender, erotic relationship with the plants in his parents’ garden is brutally cut short by them; two friends who play off each other (or allow themselves to be played off against each other) in their pursuit of their boss, only to end up as losers themselves …",
+      "synopsis_p3": "A colorful kaleidoscope of human depths, in which a faint hope simultaneously begins to emerge that reconciliation is possible after all.",
+      "authors": "Hugo de Salcedo · Alejo Olivero · Marina Wainer",
+      "gender": "Collection of short plays",
+      "duration": "90 minutes",
+      "language": "Spanish"
+    },
+    "sponsors": {
+      "title": "Thanks to our sponsors"
     },
     "carrousel": {
       "no_images": "No images to display"
@@ -192,7 +225,8 @@
       "your_name": "Your name",
       "your_email": "Your email address",
       "total": "Total",
-      "complete_form": "Complete the form to proceed with payment",
+      "complete_form": "Complete the form to reserve your ticket",
+      "reserve_button": "Reserve",
       "confirmation_title": "Booking confirmed!",
       "confirmation_body": "Your reservation has been received. You will get a confirmation email shortly.",
       "show_label": "Show",
@@ -252,21 +286,13 @@
       "collaboration_title": "Zusammenarbeit und Expansion",
       "collaboration_desc": "Wir werden an Festivals und Tourneen teilnehmen und mit anderen Gruppen zusammenarbeiten, um internationale Kulturnetzwerke aufzubauen."
     },
-    "lamalditacomedia": {
-      "title": "Die Göttliche Tragödie oder Die Verdammte Komödie",
+    "play": {
       "synopsis_title": "Inhalt",
-      "synopsis_p1": "Mitten in einer politischen Krise bewertet das Verteidigungsministerium, wohin die Demokratie führen kann. Berater mischen die Karten der Tyrannien und entdecken deren natürliche Ressourcen. Aufgrund der Anzahl der verbündeten Wähler wird ein Überraschungsangriff auf die Hölle erklärt, und der Teufel wird gefangen genommen.",
-      "synopsis_p2": "Dieser Krieg bedroht jedoch die himmlischen Unternehmensinteressen und gibt Anlass zu einem beispiellosen Bündnis zwischen Himmel und Hölle.",
-      "synopsis_p3": "Eine beispiellose Schlacht bricht zwischen der Erde und der Hölle aus. Nach dem himmlischen Scheitern, die unterirdische Tyrannei zu beenden, träumt ein Land davon, die Demokratie zu fördern und, falls nötig, die dort eingesperrten Seelen zu befreien. Plötzlich wird die Hölle invadiert.",
-      "synopsis_p4": "In dieser Parodie der Klischees verschiedener Genres (politische Satire, Fantasy und theologische Allegorie) wird der ewige Kampf zwischen Gut und Böse erzählt, der ins Übernatürliche eindringt, aber im Grunde völlig menschliche und irdische Themen erforscht.",
-      "synopsis_p5": "Mitten in einer politischen Krise bewertet das Verteidigungsministerium, wohin die Demokratie führen kann. Berater mischen die Karten der Tyrannien und entdecken deren natürliche Ressourcen. Aufgrund der Anzahl der verbündeten Wähler wird ein Überraschungsangriff auf die Hölle erklärt, und der Teufel wird gefangen genommen. Dieser Krieg bedroht jedoch die himmlischen Unternehmensinteressen und gibt Anlass zu einem beispiellosen Bündnis zwischen Himmel und Hölle. Eine beispiellose Schlacht bricht zwischen der Erde und der Hölle aus. Nach dem himmlischen Scheitern, die unterirdische Tyrannei zu beenden, träumt ein Land davon, die Demokratie zu fördern und, falls nötig, die dort eingesperrten Seelen zu befreien. Plötzlich wird die Hölle invadiert.",
-      "synopsis_p6": "In dieser Parodie der Klischees verschiedener Genres (politische Satire, Fantasy und theologische Allegorie) wird der ewige Kampf zwischen Gut und Böse erzählt, der ins Übernatürliche eindringt, aber im Grunde völlig menschliche und irdische Themen erforscht. Welche Rolle spielt die Demokratie in einer Welt, in der Himmel und Hölle gemeinsame Sache machen?",
-      "synopsis_p7": "Jede Ähnlichkeit mit der Realität ist rein zufällig.",
       "technical_title": "Technisches Datenblatt",
       "cast_title": "Besetzung",
       "gallery_title": "Galerie",
       "field_title": "Titel",
-      "field_author": "Autor",
+      "field_author": "Autoren",
       "field_genre": "Genre",
       "field_duration": "Dauer",
       "field_language": "Sprache",
@@ -277,10 +303,34 @@
       "field_lighting": "Lichtdesign",
       "field_costumes": "Kostüm und Maske",
       "field_scenography": "Bühnenbild",
+      "field_choreography": "Choreografieleitung",
       "field_technical": "Technische Assistenz",
       "field_graphic": "Grafikdesign",
       "field_photography": "Fotografie",
-      "field_subtitles": "Untertitel auf Deutsch, Französisch und Englisch"
+      "field_subtitles": "Untertitel"
+    },
+    "lamalditacomedia": {
+      "title": "Die Göttliche Tragödie oder Die Verdammte Komödie",
+      "synopsis_p1": "Mitten in einer politischen Krise bewertet das Verteidigungsministerium, wohin die Demokratie führen kann. Berater mischen die Karten der Tyrannien und entdecken deren natürliche Ressourcen. Aufgrund der Anzahl der verbündeten Wähler wird ein Überraschungsangriff auf die Hölle erklärt, und der Teufel wird gefangen genommen.",
+      "synopsis_p2": "Dieser Krieg bedroht jedoch die himmlischen Unternehmensinteressen und gibt Anlass zu einem beispiellosen Bündnis zwischen Himmel und Hölle.",
+      "synopsis_p3": "Eine beispiellose Schlacht bricht zwischen der Erde und der Hölle aus. Nach dem himmlischen Scheitern, die unterirdische Tyrannei zu beenden, träumt ein Land davon, die Demokratie zu fördern und, falls nötig, die dort eingesperrten Seelen zu befreien. Plötzlich wird die Hölle invadiert.",
+      "synopsis_p4": "In dieser Parodie der Klischees verschiedener Genres (politische Satire, Fantasy und theologische Allegorie) wird der ewige Kampf zwischen Gut und Böse erzählt, der ins Übernatürliche eindringt, aber im Grunde völlig menschliche und irdische Themen erforscht.",
+      "synopsis_p5": "Mitten in einer politischen Krise bewertet das Verteidigungsministerium, wohin die Demokratie führen kann. Berater mischen die Karten der Tyrannien und entdecken deren natürliche Ressourcen. Aufgrund der Anzahl der verbündeten Wähler wird ein Überraschungsangriff auf die Hölle erklärt, und der Teufel wird gefangen genommen. Dieser Krieg bedroht jedoch die himmlischen Unternehmensinteressen und gibt Anlass zu einem beispiellosen Bündnis zwischen Himmel und Hölle. Eine beispiellose Schlacht bricht zwischen der Erde und der Hölle aus. Nach dem himmlischen Scheitern, die unterirdische Tyrannei zu beenden, träumt ein Land davon, die Demokratie zu fördern und, falls nötig, die dort eingesperrten Seelen zu befreien. Plötzlich wird die Hölle invadiert.",
+      "synopsis_p6": "In dieser Parodie der Klischees verschiedener Genres (politische Satire, Fantasy und theologische Allegorie) wird der ewige Kampf zwischen Gut und Böse erzählt, der ins Übernatürliche eindringt, aber im Grunde völlig menschliche und irdische Themen erforscht. Welche Rolle spielt die Demokratie in einer Welt, in der Himmel und Hölle gemeinsame Sache machen?",
+      "synopsis_p7": "Jede Ähnlichkeit mit der Realität ist rein zufällig."
+    },
+    "laberinto": {
+      "title": "Labyrinth",
+      "synopsis_p1": "Verrat und Täuschung im zwischenmenschlichen Bereich – das ist der rote Faden, der fünf kurze Theaterstücke unter dem Motto „Das Labyrinth der Täuschung” miteinander verbindet.",
+      "synopsis_p2": "LOS MUTANTES (ent-)führen uns dieses Mal in ein Labyrinth unterschiedlicher Szenarien, in denen die Protagonisten andere hinters Licht führen und selbst betrogen werden: Ein verschmähter Liebhaber, ein Mann in einem Labyrinth aus Fiktion und Wirklichkeit, zwei Schwestern, die um den gleichen Mann buhlen, ein Junge, dessen zärtlich-erotisches Verhältnis zu den Pflanzen brutal unterbunden wird, zwei Freunde, die im Werben um ihre Chefin gegeneinander ausgespielt werden…",
+      "synopsis_p3": "Ein buntes Kaleidoskop menschlicher Abgründe, und am Ende die leise Hoffnung, dass Versöhnung trotz allem möglich ist.",
+      "authors": "Hugo de Salcedo · Alejo Olivero · Marina Wainer",
+      "gender": "Sammlung von Kurzstücken",
+      "duration": "90 Minuten",
+      "language": "Spanisch"
+    },
+    "sponsors": {
+      "title": "Dank an unsere Sponsoren"
     },
     "carrousel": {
       "no_images": "Keine Bilder zum Anzeigen"
@@ -297,7 +347,8 @@
       "your_name": "Dein Name",
       "your_email": "Deine E-Mail-Adresse",
       "total": "Gesamt",
-      "complete_form": "Bitte fülle das Formular aus, um fortzufahren",
+      "complete_form": "Bitte fülle das Formular aus, um dein Ticket zu reservieren",
+      "reserve_button": "Reservieren",
       "confirmation_title": "Buchung bestätigt!",
       "confirmation_body": "Deine Reservierung wurde empfangen. Du erhältst in Kürze eine Bestätigungs-E-Mail.",
       "show_label": "Vorstellung",
