@@ -11,7 +11,6 @@ import {
   ListBox,
   Modal,
 } from "@heroui/react";
-import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { SHOWS, getTicketPrice, Show } from "@/lib/shows";
 
@@ -22,7 +21,7 @@ function getTheaterDisplay(theaterKey: string, universityName: string): string {
 }
 
 export default function Tickets() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedShowIso, setSelectedShowIso] = useState<string>("");
   const [ticketCount, setTicketCount] = useState(1);
   const [name, setName] = useState("");
@@ -54,7 +53,7 @@ export default function Tickets() {
   const isFormValid =
     !!show && !!name.trim() && email.includes("@") && ticketCount >= 1;
 
-  const handleReservation = async (paypalOrderId: string) => {
+  const handleReservation = async () => {
     setIsLoading(true);
     setError("");
     try {
@@ -72,7 +71,7 @@ export default function Tickets() {
           },
           tickets: ticketCount,
           isStudent,
-          paypalOrderId,
+          language,
         }),
       });
       if (!res.ok) throw new Error("Reservation failed");
@@ -187,34 +186,14 @@ export default function Tickets() {
               </p>
             )}
 
-            <PayPalButtons
-              disabled={!isFormValid || isLoading}
-              forceReRender={[total, show?.isoDate, ticketCount]}
-              createOrder={(_data, actions) =>
-                actions.order.create({
-                  intent: "CAPTURE",
-                  purchase_units: [
-                    {
-                      amount: {
-                        currency_code: "EUR",
-                        value: total.toFixed(2),
-                      },
-                      description: show
-                        ? `${ticketCount}x ${show.city} ${show.date}`
-                        : "",
-                    },
-                  ],
-                })
-              }
-              onApprove={async (data, actions) => {
-                await actions.order!.capture();
-                // await handleReservation(data.orderID);
-              }}
-              onError={(err) => {
-                console.error("PayPal error:", err);
-                setError(t.tickets.error);
-              }}
-            />
+            <Button
+              variant="primary"
+              isDisabled={!isFormValid || isLoading}
+              onPress={handleReservation}
+              className="w-full bg-red-800 text-white"
+            >
+              {isLoading ? "..." : t.tickets.reserve_button}
+            </Button>
 
             {error && (
               <p className="text-sm text-red-600 text-center">{error}</p>

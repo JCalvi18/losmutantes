@@ -4,9 +4,9 @@ import { sendConfirmation } from "@/lib/mailer";
 import { getTicketPrice } from "@/lib/shows";
 
 export async function POST(req: NextRequest) {
-  const { name, email, show, tickets, isStudent, paypalOrderId } = await req.json();
+  const { name, email, show, tickets, isStudent, language } = await req.json();
 
-  if (!name || !email || !show || !tickets || !paypalOrderId || isStudent === undefined) {
+  if (!name || !email || !show || !tickets || isStudent === undefined) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 
@@ -15,9 +15,12 @@ export async function POST(req: NextRequest) {
   const pricePerTicket = getTicketPrice(isStudent, isDayOf);
   const amount = tickets * pricePerTicket;
 
+  const reservationId = String(Math.floor(100000 + Math.random() * 900000));
+
   const client = await getMongoClient();
   const db = client.db("losmutantes");
-  const result = await db.collection("reservations").insertOne({
+  await db.collection("reservations").insertOne({
+    reservationId,
     name,
     email,
     show,
@@ -26,15 +29,12 @@ export async function POST(req: NextRequest) {
     isDayOf,
     pricePerTicket,
     amount,
-    paypalOrderId,
-    status: "confirmed",
+    status: "pending_payment",
     createdAt: new Date(),
   });
 
-  const reservationId = result.insertedId.toString();
-
   try {
-    await sendConfirmation(email, name, show, tickets, amount, reservationId);
+    await sendConfirmation(email, name, show, tickets, amount, reservationId, language ?? "es", isStudent);
   } catch (err) {
     console.error("Failed to send confirmation email:", err);
   }

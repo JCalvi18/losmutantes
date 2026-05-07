@@ -65,9 +65,9 @@ No test suite is configured.
 ### Flow
 1. User selects a show (filtered to future dates), enters ticket count (1–10), student status, name, and email.
 2. Price is calculated via `getTicketPrice(isStudent, isDayOf)` from `lib/shows.ts`.
-3. PayPal buttons (enabled only when form is valid) create an order in USD.
-4. On PayPal approval, `POST /api/reservations` is called with `{ name, email, show, tickets, isStudent, paypalOrderId }`.
-5. API validates, saves to MongoDB (`reservations` collection), and sends a confirmation email.
+3. Reserve button (enabled only when form is valid) calls `POST /api/reservations` with `{ name, email, show, tickets, isStudent, language }`.
+4. API generates a 6-digit `reservationId`, saves to MongoDB (`reservations` collection, status `pending_payment`), and sends a confirmation email in the user's language.
+5. The confirmation email instructs the user to make a bank transfer (IBAN + holder from env) using the reservation ID as the payment reference.
 6. A confirmation modal displays show, date, booking ID, and total; "Book another" resets the form.
 
 ### Show data (`lib/shows.ts`)
@@ -88,6 +88,57 @@ No test suite is configured.
 ### PayPal
 - `@paypal/react-paypal-js` — `PayPalScriptProvider` is in `app/providers.tsx`.
 - Requires env var `NEXT_PUBLIC_PAYPAL_CLIENT_ID`.
+
+---
+
+## PayPal Implementation (disabled — reservation-only mode)
+
+PayPal was removed temporarily from the tickets flow. To revert:
+
+### 1. `app/tickets/tickets.tsx`
+- Re-add import: `import { PayPalButtons } from "@paypal/react-paypal-js";`
+- Change `handleReservation` signature back to `async (paypalOrderId: string)`
+- Add `paypalOrderId` back to the fetch body: `body: JSON.stringify({ ..., paypalOrderId })`
+- Replace the Reserve `<Button>` with the original `<PayPalButtons>` block:
+
+```tsx
+<PayPalButtons
+  disabled={!isFormValid || isLoading}
+  forceReRender={[total, show?.isoDate, ticketCount]}
+  createOrder={(_data, actions) =>
+    actions.order.create({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: { currency_code: "EUR", value: total.toFixed(2) },
+          description: show ? `${ticketCount}x ${show.city} ${show.date}` : "",
+        },
+      ],
+    })
+  }
+  onApprove={async (data, actions) => {
+    await actions.order!.capture();
+    await handleReservation(data.orderID);
+  }}
+  onError={(err) => {
+    console.error("PayPal error:", err);
+    setError(t.tickets.error);
+  }}
+/>
+```
+
+### 2. `app/api/reservations/route.ts`
+- Add `paypalOrderId` back to the destructured request body
+- Add it to the required-fields validation: `!paypalOrderId`
+- Change `paypalOrderId: paypalOrderId ?? null` back to `paypalOrderId`
+- Change `status: "pending_payment"` back to `status: "confirmed"`
+
+### 3. `app/i18n/translations.json`
+- Remove `reserve_button` keys from all three languages (`es`, `en`, `de`)
+- Revert `complete_form` strings to their payment-oriented wording:
+  - `es`: `"Completa el formulario para continuar con el pago"`
+  - `en`: `"Complete the form to proceed with payment"`
+  - `de`: `"Bitte fülle das Formular aus, um fortzufahren"`
 
 ---
 
@@ -150,6 +201,8 @@ No test suite is configured.
 | Variable | Purpose |
 |----------|---------|
 | `MONGODB_URI` | MongoDB connection string |
-| `EMAIL_USER` | IONOS SMTP login |
-| `EMAIL_PASS` | IONOS SMTP password |
+| `IONOS_EMAIL` | IONOS SMTP login |
+| `IONOS_PASSWORD` | IONOS SMTP password |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | PayPal client ID (exposed to browser) |
+| `BANK_IBAN` | IBAN shown in reservation confirmation emails |
+| `BANK_HOLDER` | Account holder name shown in reservation confirmation emails |
