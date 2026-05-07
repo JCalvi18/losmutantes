@@ -52,11 +52,7 @@ export default function Page() {
                 bg-[var(--lb-background)]/80
                 font-bebas
                 ">
-
-
-
-
-                <h1 className="sm:text-3xl font-bold self-center">{t.laberinto.title}</h1>
+                <h1 className="sm:text-3xl text-[var(--lb-orange)] font-bold self-center">{t.laberinto.title}</h1>
 
 
                 <Image
