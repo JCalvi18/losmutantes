@@ -81,18 +81,19 @@ export default function Page() {
                     <Names title={t.play.field_language} description={t.laberinto.language} />
 
 
-                    <Names title={t.play.field_direction} description="Jorge Calvimontes | Polina Stadnikova" />
-                    <Names title={t.play.field_production} description="Diego Nuñez, Cecilia Paladines, Polina Stadnikova y Jorge Calvimontes" />
-                    <Names title={t.play.field_assistant_direction} description="Cecilia Paladines" />
-                    <Names title={t.play.field_choreography} description="Silvina Holender" />
-                    <Names title={t.play.field_lighting} description="Jorge Calvimontes y Alejo Olivero" />
-                    <Names title={t.play.field_costumes} description="Veronica Gimenez" />
-                    <Names title={t.play.field_scenography} description="Paolo Vega y Mercedes Ruiz" />
-                    <Names title={t.play.field_sound} description="Silvina Holender, Veronica Gimenez, Alejo Olivero y Jorge Calvimontes" />
+                    <Names title={t.play.field_direction} description={t.laberinto.crew_direction} />
+                    <Names title={t.play.field_production} description={t.laberinto.crew_production} />
+                    <Names title={t.play.field_assistant_direction} description={t.laberinto.crew_assistant_direction} />
+                    <Names title={t.play.field_choreography} description={t.laberinto.crew_choreography} />
+                    <Names title={t.play.field_lighting} description={t.laberinto.crew_lighting} />
+                    <Names title={t.play.field_marketing} description={t.laberinto.crew_marketing} />
+                    <Names title={t.play.field_costumes} description={t.laberinto.crew_costumes} />
+                    <Names title={t.play.field_scenography} description={t.laberinto.crew_scenography} />
+                    <Names title={t.play.field_sound} description={t.laberinto.crew_sound} />
                     {/* <Names title={t.play.field_technical} description="Leandro" /> */}
-                    <Names title={t.play.field_graphic} description="Gabriela Durán" />
-                    <Names title={t.play.field_photography} description="David Weiss" />
-                    <Names title={t.play.field_subtitles} description="Isa Anzaldo," />
+                    <Names title={t.play.field_graphic} description={t.laberinto.crew_graphic} />
+                    <Names title={t.play.field_photography} description={t.laberinto.crew_photography} />
+                    <Names title={t.play.field_subtitles} description={t.laberinto.crew_subtitles} />
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-bold">{t.play.cast_title}</h2>
@@ -118,13 +119,13 @@ export default function Page() {
                     <Person name="Veronica Gimenez" flags={['UY']} />
                     <Person name="Silvina Holender" flags={['AR', 'DE']} />
                     <Person name="Jonas Jung" flags={['DE', 'CO']} />
-                    <Person name="Jennifer Carmen Kubistin Quirós" flags={['DE']} />
+                    <Person name="Jennifer Carmen Kubistin Quirós" flags={['DE', 'CR']} />
                     <Person name="Pilar Morales" flags={['MX']} />
                     <Person name="Diego Nuñez" flags={['CO']} />
                     <Person name="Alejo Olivero" flags={['UY']} />
                     <Person name="Cecilia Paladines" flags={['EC', 'DE']} />
-                    <Person name="Polina Stadnikova" flags={['RU', 'DE']} />
-                    <Person name="Aldana Troncoso" flags={['AR']} />
+                    <Person name="Polina Stadnikova" flags={['DE']} />
+                    <Person name="Aldana Troncoso" flags={['AR', 'IT']} />
                     <Person name="Paolo Vega" flags={['MX']} />
                     <Person name="Simon Vergara" flags={['CL']} />
                     {/* <Person name="Clara Vater" flags={['DE']} /> */}

@@ -133,21 +133,28 @@ export default function Tickets() {
               </Select.Popover>
             </Select>
 
-            <TextField
-              className="max-w-xs"
-              onChange={(v) => {
-                const n = parseInt(v, 10);
-                if (!isNaN(n) && n >= 1 && n <= 10) setTicketCount(n);
-              }}
-            >
+            <div className="flex flex-col gap-1">
               <Label>{t.tickets.ticket_count}</Label>
-              <Input
-                type="number"
-                min={1}
-                max={10}
-                value={ticketCount.toString()}
-              />
-            </TextField>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setTicketCount((n) => Math.max(1, n - 1))}
+                  disabled={ticketCount <= 1}
+                  className="w-9 h-9  rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
+                >
+                  −
+                </button>
+                <span className="w-6 text-center font-semibold">{ticketCount}</span>
+                <button
+                  type="button"
+                  onClick={() => setTicketCount((n) => Math.min(10, n + 1))}
+                  disabled={ticketCount >= 10}
+                  className="w-9 h-9 rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
+                >
+                  +
+                </button>
+              </div>
+            </div>
 
             <Checkbox isSelected={isStudent} onChange={setIsStudent}>
               <Checkbox.Control>

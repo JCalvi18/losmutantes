@@ -2,8 +2,8 @@
 @import "@heroui/styles";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -14,13 +14,6 @@
   --font-russo: var(--font-russo-one);
   --font-antonio: var(--font-antonio);
   --font-bebas: var(--font-bebas-neue);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #171717;
-  }
 }
 
 body {
