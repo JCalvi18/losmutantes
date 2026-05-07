@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Image from "next/image"
 import { map } from 'lodash'
 
@@ -8,6 +8,7 @@ import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import Carrousel from "@/app/carrousel"
 import { useLanguage } from "@/app/i18n/LanguageContext"
 import { ASSETS } from "@/lib/assets"
+import { useGalleryImages } from "@/app/hooks/useGalleryImages"
 
 
 function Names({ title, description }: { title: string, description: string }) {
@@ -33,19 +34,7 @@ function Person({ name, flags }: { name: string, flags: string[] }) {
 export default function Page() {
 
     const { t } = useLanguage();
-    const [galleryImages, setGalleryImages] = useState<{ src: string; alt?: string }[]>([]);
-
-    useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                const res = await fetch("/api/getMCimages", { cache: "no-store" });
-                if (!res.ok) return;
-                const data = await res.json();
-                if (Array.isArray(data?.images)) setGalleryImages(data.images);
-            } catch { }
-        };
-        fetchImages();
-    }, []);
+    const galleryImages = useGalleryImages("malditaComedia/galery");
 
     const textParagraphBlack = "text-base leading-relaxed text-justify text-black"
 
@@ -71,7 +60,7 @@ export default function Page() {
             />
 
 
-            <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.synopsis_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{t.play.synopsis_title}</h2>
 
             <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p1}</p>
 
@@ -87,30 +76,30 @@ export default function Page() {
 
             <p className={textParagraphBlack}>{t.lamalditacomedia.synopsis_p7}</p>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.lamalditacomedia.technical_title}</h2>
-            <Names title={t.lamalditacomedia.field_title} description="La Divina Tragedia o La Maldita Comedia" />
-            <Names title={t.lamalditacomedia.field_author} description="Tomás Afán Muñoz" />
-            <Names title={t.lamalditacomedia.field_genre} description="Drama balístico" />
-            <Names title={t.lamalditacomedia.field_duration} description="80 minutos" />
-            <Names title={t.lamalditacomedia.field_language} description="Español" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.play.technical_title}</h2>
+            <Names title={t.play.field_title} description="La Divina Tragedia o La Maldita Comedia" />
+            <Names title={t.play.field_author} description="Tomás Afán Muñoz" />
+            <Names title={t.play.field_genre} description="Drama balístico" />
+            <Names title={t.play.field_duration} description="80 minutos" />
+            <Names title={t.play.field_language} description="Español" />
 
-            <Names title={t.lamalditacomedia.field_direction} description="Cecilia Paladines" />
-            <Names title={t.lamalditacomedia.field_production} description="Diego Nuñez, Alejo Olivero, Polina Stadnikova y Paolo Vega" />
-            <Names title={t.lamalditacomedia.field_assistant_direction} description="Jorge Calvimontes y Diego Nuñez" />
-            <Names title={t.lamalditacomedia.field_sound} description="David Röttele" />
-            <Names title={t.lamalditacomedia.field_lighting} description="Jorge Calvimontes y Alejo Olivero" />
-            <Names title={t.lamalditacomedia.field_costumes} description="Silvina Holender, Anna Martiney y Polina Stadnikova" />
-            <Names title={t.lamalditacomedia.field_scenography} description="Paolo Vega y Polina Stadnikova" />
-            <Names title={t.lamalditacomedia.field_technical} description="Alejandro Olivero" />
-            <Names title={t.lamalditacomedia.field_graphic} description="Gabriela Durán" />
-            <Names title={t.lamalditacomedia.field_photography} description="David Weiss" />
-            <Names title={t.lamalditacomedia.field_subtitles} description="Isa Anzaldo, Birgit Bellmann y Anastasia Fink" />
+            <Names title={t.play.field_direction} description="Cecilia Paladines" />
+            <Names title={t.play.field_production} description="Diego Nuñez, Alejo Olivero, Polina Stadnikova y Paolo Vega" />
+            <Names title={t.play.field_assistant_direction} description="Jorge Calvimontes y Diego Nuñez" />
+            <Names title={t.play.field_sound} description="David Röttele" />
+            <Names title={t.play.field_lighting} description="Jorge Calvimontes y Alejo Olivero" />
+            <Names title={t.play.field_costumes} description="Silvina Holender, Anna Martiney y Polina Stadnikova" />
+            <Names title={t.play.field_scenography} description="Paolo Vega y Polina Stadnikova" />
+            <Names title={t.play.field_technical} description="Alejandro Olivero" />
+            <Names title={t.play.field_graphic} description="Gabriela Durán" />
+            <Names title={t.play.field_photography} description="David Weiss" />
+            <Names title={t.play.field_subtitles} description="Isa Anzaldo, Birgit Bellmann y Anastasia Fink" />
 
 
-            <h2 className="text-2xl sm:text-3xl font-bold">{t.lamalditacomedia.cast_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">{t.play.cast_title}</h2>
             <Image
                 src={ASSETS.mcNosotros}
-                alt={t.lamalditacomedia.cast_title}
+                alt={t.play.cast_title}
                 width={1600}
                 height={900}
                 sizes="(max-width: 1024px) 100vw, 768px"
@@ -140,7 +129,7 @@ export default function Page() {
                 <Person name="Simon Vergara" flags={['CL']} />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.lamalditacomedia.gallery_title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black">{t.play.gallery_title}</h2>
             <Carrousel images={galleryImages} className="w-full" />
 
 

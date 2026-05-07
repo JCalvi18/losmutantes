@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { list } from "@vercel/blob";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const prefix = searchParams.get("prefix") ?? "malditaComedia/galery";
   try {
-    const { blobs } = await list({ prefix: "malditaComedia/galery" });
+    const { blobs } = await list({ prefix });
     const images = blobs
       .filter((b) => /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(b.pathname))
       .sort((a, b) =>

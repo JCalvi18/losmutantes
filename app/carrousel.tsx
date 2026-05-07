@@ -79,7 +79,7 @@ export function Carrousel({
           alt={current.alt ?? "Gallery image"}
           fill
           sizes="(max-width: 768px) 100vw, 768px"
-          className="object-cover bg-background"
+          className="object-contain bg-background"
           priority
         />
 

@@ -163,3 +163,14 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Laberinto page — sequential fade-in */
+@keyframes lbFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.lb-fade-in {
+  opacity: 0;
+  animation: lbFadeIn 0.7s ease forwards;
+}
