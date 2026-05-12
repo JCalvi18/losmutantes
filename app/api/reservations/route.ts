@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
     isDayOf,
     pricePerTicket,
     amount,
+    language: language ?? "es",
     status: "pending_payment",
     createdAt: new Date(),
   });

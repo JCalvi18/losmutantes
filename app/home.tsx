@@ -125,6 +125,8 @@ function Home() {
 
         <p className="lb-fade-in leading-relaxed" style={delay(4350)}>{t.home.description3}</p>
 
+        <p className="lb-fade-in leading-relaxed text-[var(--lb-blue)]" style={delay(4350)}>{t.home.subtitles}</p>
+
         <div className="lb-fade-in flex flex-col sm:flex-col gap-8 items-center" style={delay(4600)}>
           <Link
             href="/laberinto"
@@ -165,7 +167,7 @@ function Home() {
               width={120}
               height={120}
               sizes="(max-width: 640px) 50vw, 17vw"
-              className="w-3/4 h-auto object-contain mx-auto rounded-2xl"
+              className="w-3/4 h-auto object-contain mx-auto bg-white"
               priority
             />
           )}

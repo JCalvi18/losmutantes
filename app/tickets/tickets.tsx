@@ -117,7 +117,7 @@ export default function Tickets() {
                 <Select.Value />
                 <Select.Indicator />
               </Select.Trigger>
-              <Select.Popover>
+              <Select.Popover className="text-black">
                 <ListBox>
                   {futureShows.map((s) => (
                     <ListBox.Item

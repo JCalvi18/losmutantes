@@ -113,9 +113,13 @@ export default function Page() {
                     <Person name="Isa Anzaldo" flags={['MX', 'DE']} />
                     <Person name="Birgit Bellmann" flags={['DE']} />
                     <Person name="Jacqueline Bonilla Pérez" flags={['MX']} />
+                    <Person name="Helga Böcker" flags={['CO', 'DE']} />
                     <Person name="Jorge Calvimontes" flags={['BO']} />
                     <Person name="Humberto Consuegra" flags={['CO']} />
+                    <Person name="Francesco Crifò" flags={['IT']} />
                     <Person name="Luciana Dos Ramos" flags={['UY']} />
+                    <Person name="Nikolaos Engonopoulos" flags={['GR']} />
+                    <Person name="Pahola González Tovar" flags={['MX']} />
                     <Person name="Veronica Gimenez" flags={['UY']} />
                     <Person name="Silvina Holender" flags={['AR', 'DE']} />
                     <Person name="Jonas Jung" flags={['DE', 'CO']} />
@@ -130,7 +134,6 @@ export default function Page() {
                     <Person name="Simon Vergara" flags={['CL']} />
                     {/* <Person name="Clara Vater" flags={['DE']} /> */}
 
-                    {/* <Person name="Nikolaos Engonopoulos" flags={['GR']} /> */}
                 </div>
 
                 <h2 className="text-[var(--lb-orange)] text-2xl sm:text-3xl font-bold">{t.play.gallery_title}</h2>
