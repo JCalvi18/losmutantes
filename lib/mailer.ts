@@ -35,7 +35,7 @@ const content = {
     studentNote:
       "Recuerda presentar tu carnet de estudiante el día de la función.",
     footer:
-      "Una vez recibido el pago, te enviaremos un mail de confirmaciòn. ¡Nos vemos en la función!",
+      "Presenta tu comprobante de transferencia para confirmar tu reserva el dia de la presentacion. ¡Nos vemos en la función!",
     subfooter: "Los Mutantes — Teatro amateur en español, Universidad del Saarland",
   },
   en: {
@@ -60,7 +60,7 @@ const content = {
     studentNote:
       "Remember to bring your student ID on the day of the show.",
     footer:
-      "Once we receive the payment, we will send you a confirmation email. See you at the show!",
+      "Present your transfer receipt to confirm your reservation on the day of the show. See you at the show!",
     subfooter: "Los Mutantes — Amateur Spanish-language theatre, Saarland University",
   },
   de: {
@@ -85,7 +85,7 @@ const content = {
     studentNote:
       "Denk daran, deinen Studentenausweis am Vorstellungstag mitzubringen.",
     footer:
-      "Sobald wir die Zahlung erhalten haben, schicken wir dir eine Bestätigungs-E-Mail. Bis zur Vorstellung!",
+      "Zeige deinen Überweisungsbeleg am Vorstellungstag, um deine Reservierung zu bestätigen. Bis zur Vorstellung!",
     subfooter: "Los Mutantes — Amateurtheater auf Spanisch, Universität des Saarlandes",
   },
 };
