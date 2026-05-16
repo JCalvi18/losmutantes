@@ -41,7 +41,7 @@ export default function Tickets() {
     (s) => s.isoDate === selectedShowIso
   );
   const isDayOf = show?.isoDate === TODAY;
-  const pricePerTicket = show ? getTicketPrice(isStudent, isDayOf) : 0;
+  const pricePerTicket = show ? getTicketPrice(isStudent, isDayOf, show.theater) : 0;
   const total = ticketCount * pricePerTicket;
 
   const tierLabel = show

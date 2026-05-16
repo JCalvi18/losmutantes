@@ -83,7 +83,7 @@ export default function Page() {
 
                     <Names title={t.play.field_direction} description={t.laberinto.crew_direction} />
                     <Names title={t.play.field_production} description={t.laberinto.crew_production} />
-                    <Names title={t.play.field_assistant_direction} description={t.laberinto.crew_assistant_direction} />
+                    {/* <Names title={t.play.field_assistant_direction} description={t.laberinto.crew_assistant_direction} /> */}
                     <Names title={t.play.field_choreography} description={t.laberinto.crew_choreography} />
                     <Names title={t.play.field_lighting} description={t.laberinto.crew_lighting} />
                     <Names title={t.play.field_marketing} description={t.laberinto.crew_marketing} />

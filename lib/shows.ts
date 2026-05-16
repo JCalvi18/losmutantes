@@ -1,10 +1,18 @@
 export const TICKET_PRICES = {
-  student:  { early: 8,  dayOf: 10 },
-  standard: { early: 12, dayOf: 15 },
+  university: {
+    student: { early: 5, dayOf: 7 },
+    standard: { early: 7, dayOf: 9 },
+  },
+  schloss: {
+    student: { early: 10, dayOf: 10 },
+    standard: { early: 15, dayOf: 15 },
+  },
 };
 
-export function getTicketPrice(isStudent: boolean, isDayOf: boolean): number {
-  const tier = isStudent ? TICKET_PRICES.student : TICKET_PRICES.standard;
+export function getTicketPrice(isStudent: boolean, isDayOf: boolean, theater: string): number {
+  const venueKey = theater.toLowerCase() as keyof typeof TICKET_PRICES;
+  const venue = TICKET_PRICES[venueKey] ?? TICKET_PRICES.university;
+  const tier = isStudent ? venue.student : venue.standard;
   return isDayOf ? tier.dayOf : tier.early;
 }
 
