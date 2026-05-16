@@ -133,7 +133,25 @@
       "tier_student_early": "estudiante · preventa",
       "tier_student_day_of": "estudiante · taquilla",
       "tier_standard_early": "precio normal · preventa",
-      "tier_standard_day_of": "precio normal · taquilla"
+      "tier_standard_day_of": "precio normal · taquilla",
+      "newsletter": "Quiero recibir novedades y noticias sobre Los Mutantes",
+      "data_consent_prefix": "He leído y acepto el ",
+      "data_consent_link": "tratamiento de datos personales",
+      "data_consent_suffix": "."
+    },
+    "datenschutz": {
+      "title": "Política de privacidad",
+      "controller_title": "Responsable del tratamiento",
+      "controller_body": "Los Mutantes e.V., Saarbrücken, Alemania.",
+      "data_title": "Datos recogidos",
+      "data_body": "Al realizar una reserva recogemos tu nombre y dirección de correo electrónico.",
+      "purpose_title": "Finalidad",
+      "purpose_body": "Tus datos se usan exclusivamente para gestionar tu reserva y enviarte la confirmación por correo electrónico. No se ceden a terceros ni se utilizan con fines comerciales.",
+      "storage_title": "Almacenamiento",
+      "storage_body": "Los datos se guardan en una base de datos segura y se conservan durante el período necesario para la gestión de la reserva.",
+      "rights_title": "Tus derechos",
+      "rights_body": "Tienes derecho a acceder, rectificar o suprimir tus datos en cualquier momento. Para ejercerlos, contáctanos a través del correo indicado en el pie de página.",
+      "contact_title": "Contacto"
     }
   },
   "en": {
@@ -270,7 +288,25 @@
       "tier_student_early": "student · early bird",
       "tier_student_day_of": "student · door price",
       "tier_standard_early": "standard · early bird",
-      "tier_standard_day_of": "standard · door price"
+      "tier_standard_day_of": "standard · door price",
+      "newsletter": "I want to receive news and updates from Los Mutantes",
+      "data_consent_prefix": "I have read and agree to the ",
+      "data_consent_link": "personal data processing policy",
+      "data_consent_suffix": "."
+    },
+    "datenschutz": {
+      "title": "Privacy Policy",
+      "controller_title": "Data Controller",
+      "controller_body": "Los Mutantes e.V., Saarbrücken, Germany.",
+      "data_title": "Data Collected",
+      "data_body": "When making a reservation, we collect your name and email address.",
+      "purpose_title": "Purpose",
+      "purpose_body": "Your data is used solely to manage your reservation and send you a confirmation email. It is not shared with third parties or used for commercial purposes.",
+      "storage_title": "Storage",
+      "storage_body": "Your data is stored in a secure database and retained for the period necessary to manage your reservation.",
+      "rights_title": "Your Rights",
+      "rights_body": "You have the right to access, correct or delete your data at any time. To exercise these rights, contact us via the email address in the footer.",
+      "contact_title": "Contact"
     }
   },
   "de": {
@@ -407,7 +443,25 @@
       "tier_student_early": "Student · Vorverkauf",
       "tier_student_day_of": "Student · Abendkasse",
       "tier_standard_early": "Standard · Vorverkauf",
-      "tier_standard_day_of": "Standard · Abendkasse"
+      "tier_standard_day_of": "Standard · Abendkasse",
+      "newsletter": "Ich möchte Neuigkeiten und Updates von Los Mutantes erhalten",
+      "data_consent_prefix": "Ich habe die ",
+      "data_consent_link": "Datenschutzerklärung",
+      "data_consent_suffix": " gelesen und stimme der Verarbeitung meiner personenbezogenen Daten zu."
+    },
+    "datenschutz": {
+      "title": "Datenschutzerklärung",
+      "controller_title": "Verantwortlicher",
+      "controller_body": "Los Mutantes e.V., Saarbrücken, Deutschland.",
+      "data_title": "Erhobene Daten",
+      "data_body": "Bei einer Reservierung erheben wir deinen Namen und deine E-Mail-Adresse.",
+      "purpose_title": "Zweck",
+      "purpose_body": "Deine Daten werden ausschließlich zur Abwicklung deiner Reservierung und zum Versand der Bestätigungs-E-Mail verwendet. Sie werden nicht an Dritte weitergegeben oder für kommerzielle Zwecke genutzt.",
+      "storage_title": "Speicherung",
+      "storage_body": "Deine Daten werden in einer sicheren Datenbank gespeichert und nur so lange aufbewahrt, wie es für die Verwaltung deiner Reservierung erforderlich ist.",
+      "rights_title": "Deine Rechte",
+      "rights_body": "Du hast das Recht, deine Daten jederzeit einzusehen, zu berichtigen oder zu löschen. Wende dich dazu an die E-Mail-Adresse in der Fußzeile.",
+      "contact_title": "Kontakt"
     }
   }
 }
