@@ -27,6 +27,8 @@ export default function Tickets() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isStudent, setIsStudent] = useState(false);
+  const [isNewsletter, setIsNewsletter] = useState(false);
+  const [isDataConsent, setIsDataConsent] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [reservationId, setReservationId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +53,7 @@ export default function Tickets() {
     : "";
 
   const isFormValid =
-    !!show && !!name.trim() && email.includes("@") && ticketCount >= 1;
+    !!show && !!name.trim() && email.includes("@") && ticketCount >= 1 && isDataConsent;
 
   const handleReservation = async () => {
     setIsLoading(true);
@@ -71,6 +73,7 @@ export default function Tickets() {
           },
           tickets: ticketCount,
           isStudent,
+          newsletter: isNewsletter,
           language,
         }),
       });
@@ -93,6 +96,8 @@ export default function Tickets() {
     setName("");
     setEmail("");
     setIsStudent(false);
+    setIsNewsletter(false);
+    setIsDataConsent(false);
   };
 
   return (
@@ -157,7 +162,7 @@ export default function Tickets() {
             </div>
 
             <Checkbox isSelected={isStudent} onChange={setIsStudent}>
-              <Checkbox.Control>
+              <Checkbox.Control className="border-black border-2">
                 <Checkbox.Indicator />
               </Checkbox.Control>
               <Checkbox.Content>
@@ -174,6 +179,30 @@ export default function Tickets() {
               <Label>{t.tickets.your_email}</Label>
               <Input type="email" value={email} />
             </TextField>
+
+            <Checkbox isSelected={isDataConsent} onChange={setIsDataConsent}>
+              <Checkbox.Control className="border-black border-2">
+                <Checkbox.Indicator />
+              </Checkbox.Control>
+              <Checkbox.Content>
+                <span className="text-sm">
+                  {t.tickets.data_consent_prefix}
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline text-red-700" onClick={(e) => e.stopPropagation()}>
+                    {t.tickets.data_consent_link}
+                  </a>
+                  {t.tickets.data_consent_suffix}
+                </span>
+              </Checkbox.Content>
+            </Checkbox>
+
+            <Checkbox isSelected={isNewsletter} onChange={setIsNewsletter}>
+              <Checkbox.Control className="border-black border-2">
+                <Checkbox.Indicator />
+              </Checkbox.Control>
+              <Checkbox.Content>
+                <span className="text-sm">{t.tickets.newsletter}</span>
+              </Checkbox.Content>
+            </Checkbox>
 
             {show && (
               <div className="flex justify-between items-center py-2 px-1 border-t">

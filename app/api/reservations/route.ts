@@ -4,7 +4,7 @@ import { sendConfirmation } from "@/lib/mailer";
 import { getTicketPrice } from "@/lib/shows";
 
 export async function POST(req: NextRequest) {
-  const { name, email, show, tickets, isStudent, language } = await req.json();
+  const { name, email, show, tickets, isStudent, newsletter, language } = await req.json();
 
   if (!name || !email || !show || !tickets || isStudent === undefined) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
     isDayOf,
     pricePerTicket,
     amount,
+    newsletter: newsletter ?? false,
     language: language ?? "es",
     status: "pending_payment",
     createdAt: new Date(),
