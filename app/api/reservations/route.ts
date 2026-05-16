@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   const today = new Date().toISOString().split("T")[0];
   const isDayOf = show.isoDate === today;
-  const pricePerTicket = getTicketPrice(isStudent, isDayOf);
+  const pricePerTicket = getTicketPrice(isStudent, isDayOf, show.theater);
   const amount = tickets * pricePerTicket;
 
   const reservationId = String(Math.floor(100000 + Math.random() * 900000));
