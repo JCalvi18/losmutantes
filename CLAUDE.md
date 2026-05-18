@@ -28,8 +28,11 @@ No test suite is configured.
 | `/archivo` | `app/archivo/page.tsx` | Archive landing with past play posters |
 | `/archivo/lamalditacomedia` | `app/archivo/lamalditacomedia/page.tsx` | Play details: synopsis, technical sheet, cast, gallery |
 | `/tickets` | `app/tickets/page.tsx` → `app/tickets/tickets.tsx` | Full ticket booking with PayPal integration |
+| `/registro` | `app/registro/page.tsx` → `app/registro/registro.tsx` | Internal cash-sale registration (password-gated, not in nav) |
 | `GET /api/getMCimages` | `app/api/getMCimages/route.ts` | Returns sorted gallery images from `/public/maldita_comedia_galery/` |
 | `POST /api/reservations` | `app/api/reservations/route.ts` | Saves reservation to MongoDB, sends confirmation email |
+| `POST /api/registrations` | `app/api/registrations/route.ts` | Saves cash sale to MongoDB `caja` collection (no email sent) |
+| `POST /api/auth/registro` | `app/api/auth/registro/route.ts` | Validates `REGISTRO_PASSWORD` env var for the internal registration page |
 
 ---
 
@@ -206,3 +209,4 @@ PayPal was removed temporarily from the tickets flow. To revert:
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | PayPal client ID (exposed to browser) |
 | `BANK_IBAN` | IBAN shown in reservation confirmation emails |
 | `BANK_HOLDER` | Account holder name shown in reservation confirmation emails |
+| `REGISTRO_PASSWORD` | Password protecting the `/registro` internal cash-sale page |
