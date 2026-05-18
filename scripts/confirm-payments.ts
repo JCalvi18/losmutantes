@@ -3,8 +3,9 @@ import { sendPaymentConfirmed } from "../lib/mailer";
 
 // ─── Edit this list before running ───────────────────────────────────────────
 const RESERVATION_IDS: string[] = [
-"638540"
-      	// "AB1234",
+  "738703",
+  "747269"
+  // "AB1234",
   // "CD5678",
 ];
 // ─────────────────────────────────────────────────────────────────────────────
