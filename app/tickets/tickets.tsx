@@ -35,7 +35,7 @@ export default function Tickets() {
   const [error, setError] = useState("");
 
   const futureShows = useMemo(
-    () => SHOWS.filter((s) => s.isoDate >= TODAY),
+    () => SHOWS.filter((s) => s.isoDate >= TODAY && s.city !== 'Saarbrücken (GraFiTi festival)'),
     []
   );
 

@@ -97,7 +97,7 @@ function RegistroForm() {
   const [error, setError] = useState("");
 
   const futureShows = useMemo(
-    () => SHOWS.filter((s) => s.isoDate >= TODAY),
+    () => SHOWS.filter((s) => s.isoDate >= TODAY && s.city !== 'Saarbrücken (GraFiTi festival)'),
     []
   );
 
@@ -252,11 +252,10 @@ function RegistroForm() {
                     key={lang}
                     type="button"
                     onClick={() => setLanguage(lang)}
-                    className={`px-3 py-1 rounded-full border text-sm font-medium transition-colors ${
-                      language === lang
+                    className={`px-3 py-1 rounded-full border text-sm font-medium transition-colors ${language === lang
                         ? "bg-red-800 text-white border-red-800"
                         : "border-gray-300 text-gray-600 hover:border-gray-400"
-                    }`}
+                      }`}
                   >
                     {lang.toUpperCase()}
                   </button>
@@ -298,7 +297,7 @@ function RegistroForm() {
         )}
       </div>
 
-      <Modal.Backdrop isOpen={isConfirmed} onOpenChange={() => {}}>
+      <Modal.Backdrop isOpen={isConfirmed} onOpenChange={() => { }}>
         <Modal.Container>
           <Modal.Dialog>
             <Modal.Header>
