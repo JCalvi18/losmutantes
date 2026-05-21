@@ -152,6 +152,20 @@
       "rights_title": "Tus derechos",
       "rights_body": "Tienes derecho a acceder, rectificar o suprimir tus datos en cualquier momento. Para ejercerlos, contáctanos a través del correo indicado en el pie de página.",
       "contact_title": "Contacto"
+    },
+    "impressum": {
+      "title": "Aviso Legal",
+      "org_title": "Información de la organización",
+      "org_name": "Los Mutantes e.V.",
+      "org_address": "Saarbrücken, Alemania",
+      "contact_title": "Contacto",
+      "contact_email": "info@losmutantes.de",
+      "register_title": "Registro",
+      "register_body": "Asociación inscrita (eingetragener Verein) en el Registro de Asociaciones del Juzgado de Saarbrücken.",
+      "responsible_title": "Responsable de contenidos",
+      "responsible_body": "La junta directiva de Los Mutantes e.V.",
+      "disclaimer_title": "Aviso de exención de responsabilidad",
+      "disclaimer_body": "Los contenidos de este sitio web han sido elaborados con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad y actualidad de los mismos. En la medida en que este sitio web contenga enlaces a páginas web de terceros, no asumimos responsabilidad alguna por su contenido."
     }
   },
   "en": {
@@ -307,6 +321,20 @@
       "rights_title": "Your Rights",
       "rights_body": "You have the right to access, correct or delete your data at any time. To exercise these rights, contact us via the email address in the footer.",
       "contact_title": "Contact"
+    },
+    "impressum": {
+      "title": "Legal Notice",
+      "org_title": "Organisation",
+      "org_name": "Los Mutantes e.V.",
+      "org_address": "Saarbrücken, Germany",
+      "contact_title": "Contact",
+      "contact_email": "info@losmutantes.de",
+      "register_title": "Register",
+      "register_body": "Registered association (eingetragener Verein) in the Association Register of the District Court of Saarbrücken.",
+      "responsible_title": "Responsible for Content",
+      "responsible_body": "The board of Los Mutantes e.V.",
+      "disclaimer_title": "Disclaimer",
+      "disclaimer_body": "The contents of this website have been prepared with the utmost care. However, we cannot guarantee the accuracy, completeness or timeliness of the information. Where this website contains links to third-party websites, we accept no responsibility for their content."
     }
   },
   "de": {
@@ -462,6 +490,20 @@
       "rights_title": "Deine Rechte",
       "rights_body": "Du hast das Recht, deine Daten jederzeit einzusehen, zu berichtigen oder zu löschen. Wende dich dazu an die E-Mail-Adresse in der Fußzeile.",
       "contact_title": "Kontakt"
+    },
+    "impressum": {
+      "title": "Impressum",
+      "org_title": "Angaben zur Organisation",
+      "org_name": "Los Mutantes e.V.",
+      "org_address": "Saarbrücken, Deutschland",
+      "contact_title": "Kontakt",
+      "contact_email": "info@losmutantes.de",
+      "register_title": "Registereintrag",
+      "register_body": "Eingetragener Verein im Vereinsregister des Amtsgerichts Saarbrücken.",
+      "responsible_title": "Verantwortlich für den Inhalt",
+      "responsible_body": "Der Vorstand von Los Mutantes e.V.",
+      "disclaimer_title": "Haftungsausschluss",
+      "disclaimer_body": "Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte. Soweit diese Website Links zu Webseiten Dritter enthält, übernehmen wir für deren Inhalte keine Verantwortung."
     }
   }
 }

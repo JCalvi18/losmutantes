@@ -35,6 +35,14 @@ export default function SiteFooter() {
           </Link>
         </div>
         <p className="text-xs opacity-80 text-center">{t.footer.follow}</p>
+        <div className="flex gap-4 text-xs opacity-60">
+          <Link href="/impressum" className="hover:opacity-100 transition-opacity">
+            {t.impressum.title}
+          </Link>
+          <Link href="/datenschutz" className="hover:opacity-100 transition-opacity">
+            {t.datenschutz.title}
+          </Link>
+        </div>
       </div>
     </footer>
   );
