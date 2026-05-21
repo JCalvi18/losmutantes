@@ -19,9 +19,7 @@
  *   --solve         Also draw the solution path
  *
  * Examples:
- *   node scripts/generate-maze.js --width 1920 --height 1080 --out maze-hd.svg
- *   node scripts/generate-maze.js --width 400 --height 400 --cell 20 --solve
- *   node scripts/generate-maze.js --seed 42 --out maze-42.svg
+ * node scripts/generate-maze.js --width 530 --height 1000 --cell 35 --line 8 --bg "#25683d" --fg "#f39019" --seed 78 --out maze2.svg
  */
 
 "use strict";
