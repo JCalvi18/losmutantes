@@ -39,6 +39,8 @@ export default function Tickets() {
     []
   );
 
+  const isDateDisabled = (isoDate: string) => isoDate <= TODAY;
+
   const show: Show | undefined = futureShows.find(
     (s) => s.isoDate === selectedShowIso
   );
@@ -128,6 +130,7 @@ export default function Tickets() {
                     <ListBox.Item
                       key={s.isoDate}
                       id={s.isoDate}
+                      isDisabled={isDateDisabled(s.isoDate)}
                       textValue={`${s.date} — ${getTheaterDisplay(s.theater, t.home.university)}`}
                     >
                       {s.date} — {getTheaterDisplay(s.theater, t.home.university)}
