@@ -16,7 +16,9 @@ export async function GET(request: Request) {
         alt: b.pathname.split("/").pop() ?? "",
       }));
 
-    return NextResponse.json({ images });
+    return NextResponse.json({ images }, {
+      headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+    });
   } catch {
     return NextResponse.json({ images: [] }, { status: 200 });
   }

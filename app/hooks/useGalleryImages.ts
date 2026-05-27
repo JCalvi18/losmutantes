@@ -8,7 +8,7 @@ export function useGalleryImages(prefix: string) {
       try {
         const res = await fetch(
           `/api/getMCimages?prefix=${encodeURIComponent(prefix)}`,
-          { cache: "no-store" }
+          { cache: "force-cache" }
         );
         if (!res.ok) return;
         const data = await res.json();
