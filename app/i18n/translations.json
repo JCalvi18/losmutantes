@@ -137,7 +137,8 @@
       "newsletter": "Quiero recibir novedades y noticias sobre Los Mutantes",
       "data_consent_prefix": "He leído y acepto el ",
       "data_consent_link": "tratamiento de datos personales",
-      "data_consent_suffix": "."
+      "data_consent_suffix": ".",
+      "buy_at_door": "Para esta función puedes comprar tu entrada directamente en la taquilla."
     },
     "datenschutz": {
       "title": "Política de privacidad",
@@ -306,7 +307,8 @@
       "newsletter": "I want to receive news and updates from Los Mutantes",
       "data_consent_prefix": "I have read and agree to the ",
       "data_consent_link": "personal data processing policy",
-      "data_consent_suffix": "."
+      "data_consent_suffix": ".",
+      "buy_at_door": "For this show you can buy your ticket directly at the door."
     },
     "datenschutz": {
       "title": "Privacy Policy",
@@ -475,7 +477,8 @@
       "newsletter": "Ich möchte Neuigkeiten und Updates von Los Mutantes erhalten",
       "data_consent_prefix": "Ich habe die ",
       "data_consent_link": "Datenschutzerklärung",
-      "data_consent_suffix": " gelesen und stimme der Verarbeitung meiner personenbezogenen Daten zu."
+      "data_consent_suffix": " gelesen und stimme der Verarbeitung meiner personenbezogenen Daten zu.",
+      "buy_at_door": "Für diese Vorstellung kannst du dein Ticket direkt an der Abendkasse kaufen."
     },
     "datenschutz": {
       "title": "Datenschutzerklärung",

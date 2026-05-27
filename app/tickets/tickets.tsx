@@ -14,7 +14,7 @@ import {
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { SHOWS, getTicketPrice, Show } from "@/lib/shows";
 
-const TODAY = new Date().toISOString().split("T")[0];
+const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Berlin" }).split("T")[0]
 
 function getTheaterDisplay(theaterKey: string, universityName: string): string {
   return theaterKey === "university" ? universityName : theaterKey;
@@ -39,7 +39,7 @@ export default function Tickets() {
     []
   );
 
-  const isDateDisabled = (isoDate: string) => isoDate <= TODAY;
+  const isDateDisabled = (isoDate: string) => isoDate < TODAY;
 
   const show: Show | undefined = futureShows.find(
     (s) => s.isoDate === selectedShowIso
@@ -141,101 +141,109 @@ export default function Tickets() {
               </Select.Popover>
             </Select>
 
-            <div className="flex flex-col gap-1">
-              <Label>{t.tickets.ticket_count}</Label>
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setTicketCount((n) => Math.max(1, n - 1))}
-                  disabled={ticketCount <= 1}
-                  className="w-9 h-9  rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
-                >
-                  −
-                </button>
-                <span className="w-6 text-center font-semibold">{ticketCount}</span>
-                <button
-                  type="button"
-                  onClick={() => setTicketCount((n) => Math.min(10, n + 1))}
-                  disabled={ticketCount >= 10}
-                  className="w-9 h-9 rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
-            <Checkbox isSelected={isStudent} onChange={setIsStudent}>
-              <Checkbox.Control className="border-black border-2">
-                <Checkbox.Indicator />
-              </Checkbox.Control>
-              <Checkbox.Content>
-                <Label>{t.tickets.is_student}</Label>
-              </Checkbox.Content>
-            </Checkbox>
-
-            <TextField className="max-w-xs" onChange={setName}>
-              <Label>{t.tickets.your_name}</Label>
-              <Input value={name} />
-            </TextField>
-
-            <TextField className="max-w-xs" onChange={setEmail}>
-              <Label>{t.tickets.your_email}</Label>
-              <Input type="email" value={email} />
-            </TextField>
-
-            <Checkbox isSelected={isDataConsent} onChange={setIsDataConsent}>
-              <Checkbox.Control className="border-black border-2">
-                <Checkbox.Indicator />
-              </Checkbox.Control>
-              <Checkbox.Content>
-                <span className="text-sm">
-                  {t.tickets.data_consent_prefix}
-                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline text-red-700" onClick={(e) => e.stopPropagation()}>
-                    {t.tickets.data_consent_link}
-                  </a>
-                  {t.tickets.data_consent_suffix}
-                </span>
-              </Checkbox.Content>
-            </Checkbox>
-
-            <Checkbox isSelected={isNewsletter} onChange={setIsNewsletter}>
-              <Checkbox.Control className="border-black border-2">
-                <Checkbox.Indicator />
-              </Checkbox.Control>
-              <Checkbox.Content>
-                <span className="text-sm">{t.tickets.newsletter}</span>
-              </Checkbox.Content>
-            </Checkbox>
-
-            {show && (
-              <div className="flex justify-between items-center py-2 px-1 border-t">
-                <div>
-                  <p className="text-lg font-semibold">{t.tickets.total}</p>
-                  <p className="text-xs text-gray-500">
-                    {t.tickets.price_per_ticket}: €{pricePerTicket} ({tierLabel})
-                  </p>
-                </div>
-                <span className="text-2xl font-bold">€{total.toFixed(2)}</span>
-              </div>
-            )}
-
-            {!isFormValid && (
-              <p className="text-sm text-gray-500 text-center">
-                {t.tickets.complete_form}
+            {isDayOf ? (
+              <p className="text-sm text-gray-600 text-center py-4">
+                {t.tickets.buy_at_door}
               </p>
-            )}
+            ) : (
+              <>
+                <div className="flex flex-col gap-1">
+                  <Label>{t.tickets.ticket_count}</Label>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setTicketCount((n) => Math.max(1, n - 1))}
+                      disabled={ticketCount <= 1}
+                      className="w-9 h-9  rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
+                    >
+                      −
+                    </button>
+                    <span className="w-6 text-center font-semibold">{ticketCount}</span>
+                    <button
+                      type="button"
+                      onClick={() => setTicketCount((n) => Math.min(10, n + 1))}
+                      disabled={ticketCount >= 10}
+                      className="w-9 h-9 rounded-full border border-gray-300 text-lg font-bold disabled:opacity-30 flex items-center justify-center"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
 
-            <Button
-              variant="primary"
-              isDisabled={!isFormValid || isLoading}
-              onPress={handleReservation}
-              className="w-full bg-red-800 text-white"
-            >
-              {isLoading ? "..." : t.tickets.reserve_button}
-            </Button>
+                <Checkbox isSelected={isStudent} onChange={setIsStudent}>
+                  <Checkbox.Control className="border-black border-2">
+                    <Checkbox.Indicator />
+                  </Checkbox.Control>
+                  <Checkbox.Content>
+                    <Label>{t.tickets.is_student}</Label>
+                  </Checkbox.Content>
+                </Checkbox>
 
-            {error && (
-              <p className="text-sm text-red-600 text-center">{error}</p>
+                <TextField className="max-w-xs" onChange={setName}>
+                  <Label>{t.tickets.your_name}</Label>
+                  <Input value={name} />
+                </TextField>
+
+                <TextField className="max-w-xs" onChange={setEmail}>
+                  <Label>{t.tickets.your_email}</Label>
+                  <Input type="email" value={email} />
+                </TextField>
+
+                <Checkbox isSelected={isDataConsent} onChange={setIsDataConsent}>
+                  <Checkbox.Control className="border-black border-2">
+                    <Checkbox.Indicator />
+                  </Checkbox.Control>
+                  <Checkbox.Content>
+                    <span className="text-sm">
+                      {t.tickets.data_consent_prefix}
+                      <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline text-red-700" onClick={(e) => e.stopPropagation()}>
+                        {t.tickets.data_consent_link}
+                      </a>
+                      {t.tickets.data_consent_suffix}
+                    </span>
+                  </Checkbox.Content>
+                </Checkbox>
+
+                <Checkbox isSelected={isNewsletter} onChange={setIsNewsletter}>
+                  <Checkbox.Control className="border-black border-2">
+                    <Checkbox.Indicator />
+                  </Checkbox.Control>
+                  <Checkbox.Content>
+                    <span className="text-sm">{t.tickets.newsletter}</span>
+                  </Checkbox.Content>
+                </Checkbox>
+
+                {show && (
+                  <div className="flex justify-between items-center py-2 px-1 border-t">
+                    <div>
+                      <p className="text-lg font-semibold">{t.tickets.total}</p>
+                      <p className="text-xs text-gray-500">
+                        {t.tickets.price_per_ticket}: €{pricePerTicket} ({tierLabel})
+                      </p>
+                    </div>
+                    <span className="text-2xl font-bold">€{total.toFixed(2)}</span>
+                  </div>
+                )}
+
+                {!isFormValid && (
+                  <p className="text-sm text-gray-500 text-center">
+                    {t.tickets.complete_form}
+                  </p>
+                )}
+
+                <Button
+                  variant="primary"
+                  isDisabled={!isFormValid || isLoading}
+                  onPress={handleReservation}
+                  className="w-full bg-red-800 text-white"
+                >
+                  {isLoading ? "..." : t.tickets.reserve_button}
+                </Button>
+
+                {error && (
+                  <p className="text-sm text-red-600 text-center">{error}</p>
+                )}
+              </>
             )}
           </>
         )}
