@@ -15,10 +15,18 @@ export async function GET() {
   const showDate = getRelevantShowDate();
   const client = await getMongoClient();
   const db = client.db("losmutantes");
-  const entries = await db
+  const docs = await db
     .collection("reservations")
-    .find({ "show.isoDate": showDate, status: "pending_payment" })
-    .project({ name: 1, reservationId: 1, tickets: 1, isStudent: 1, _id: 0 })
+    .find({ status: "pending_payment" })
+    .project({ name: 1, reservationId: 1, tickets: 1, isStudent: 1, "show.isoDate": 1, _id: 1 })
     .toArray();
+  const entries = docs.map((doc) => ({
+    mongoId: doc._id.toString(),
+    name: doc.name,
+    reservationId: doc.reservationId,
+    tickets: doc.tickets,
+    isStudent: doc.isStudent,
+    showIsoDate: doc.show?.isoDate ?? "",
+  }));
   return NextResponse.json({ entries, showDate });
 }

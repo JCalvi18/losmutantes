@@ -53,6 +53,31 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ found: false });
 }
 
+export async function PATCH(req: NextRequest) {
+  const { mongoId } = await req.json();
+  if (!mongoId) return NextResponse.json({ error: "Missing mongoId" }, { status: 400 });
+
+  let oid: ObjectId;
+  try {
+    oid = new ObjectId(mongoId);
+  } catch {
+    return NextResponse.json({ error: "invalid_id" }, { status: 400 });
+  }
+
+  const client = await getMongoClient();
+  const db = client.db("losmutantes");
+  const result = await db.collection("reservations").updateOne(
+    { _id: oid, status: "pending_payment" },
+    { $set: { status: "check_in", checkedInAt: new Date() } }
+  );
+
+  if (result.matchedCount === 0) {
+    return NextResponse.json({ error: "not_found_or_wrong_status" }, { status: 404 });
+  }
+
+  return NextResponse.json({ ok: true });
+}
+
 export async function POST(req: NextRequest) {
   const { mongoId } = await req.json();
   if (!mongoId) return NextResponse.json({ error: "Missing mongoId" }, { status: 400 });

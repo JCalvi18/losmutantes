@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Button, Checkbox, Label, Select, ListBox } from "@heroui/react";
+import { groupBy } from "lodash";
 import { SHOWS, getTicketPrice } from "@/lib/shows";
 import type { Show } from "@/lib/shows";
 
@@ -30,10 +31,12 @@ type ScanResult = {
 };
 
 type PendingEntry = {
+  mongoId: string;
   name: string;
   reservationId: string;
   tickets: number;
   isStudent: boolean;
+  showIsoDate: string;
 };
 
 type PendingData = { entries: PendingEntry[]; showDate: string };
@@ -449,25 +452,27 @@ function ValidarEntrada({ onBack }: { onBack: () => void }) {
           {pendingLoading && (
             <p className="text-sm text-gray-400 text-center">Cargando...</p>
           )}
-          {!pendingLoading && pendingList.length === 0 && (
+          {!pendingLoading && pendingList.filter((e) => e.showIsoDate === TODAY).length === 0 && (
             <p className="text-sm text-gray-400 text-center">
               No hay reservas pendientes
             </p>
           )}
           {!pendingLoading &&
-            pendingList.map((entry) => (
-              <div
-                key={entry.reservationId}
-                className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col gap-1"
-              >
-                <p className="font-semibold text-sm text-black">{entry.name}</p>
-                <p className="text-xs text-gray-500">
-                  ID: {entry.reservationId} · {entry.tickets}{" "}
-                  {entry.tickets !== 1 ? "entradas" : "entrada"}
-                  {entry.isStudent ? " · estudiante" : ""}
-                </p>
-              </div>
-            ))}
+            pendingList
+              .filter((e) => e.showIsoDate === TODAY)
+              .map((entry) => (
+                <div
+                  key={entry.reservationId}
+                  className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col gap-1"
+                >
+                  <p className="font-semibold text-sm text-black">{entry.name}</p>
+                  <p className="text-xs text-gray-500">
+                    ID: {entry.reservationId} · {entry.tickets}{" "}
+                    {entry.tickets !== 1 ? "entradas" : "entrada"}
+                    {entry.isStudent ? " · estudiante" : ""}
+                  </p>
+                </div>
+              ))}
         </div>
       )}
     </section>
@@ -477,23 +482,37 @@ function ValidarEntrada({ onBack }: { onBack: () => void }) {
 // ─── VerLista ─────────────────────────────────────────────────────────────────
 
 function VerLista({ onBack }: { onBack: () => void }) {
-  const [data, setData] = useState<PendingData | null>(null);
+  const [entries, setEntries] = useState<PendingEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [markingId, setMarkingId] = useState<string | null>(null);
 
   async function load(force = false) {
     setLoading(true);
     const result = await fetchPendingList(force);
-    setData(result);
+    setEntries(result.entries);
     setLoading(false);
   }
 
-  useEffect(() => {
-    load();
-  }, []);
+  useEffect(() => { load(); }, []);
 
-  const showInfo = data?.showDate
-    ? SHOWS.find((s) => s.isoDate === data.showDate)
-    : null;
+  async function handleMarkPaid(mongoId: string) {
+    setMarkingId(mongoId);
+    try {
+      const res = await fetch("/api/checkin", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mongoId }),
+      });
+      if (res.ok) {
+        setEntries((prev) => prev.filter((e) => e.mongoId !== mongoId));
+      }
+    } finally {
+      setMarkingId(null);
+    }
+  }
+
+  const grouped = groupBy(entries, "showIsoDate");
+  const sortedDates = Object.keys(grouped).sort();
 
   return (
     <section className="container mx-auto flex-1 px-4 py-6 flex flex-col gap-4 max-w-lg">
@@ -507,38 +526,55 @@ function VerLista({ onBack }: { onBack: () => void }) {
         <h2 className="text-xl font-bold text-orange-700">Reservas pendientes</h2>
       </div>
 
-      {data?.showDate && (
-        <p className="text-sm text-gray-500 text-center">
-          {showInfo
-            ? `${showInfo.city} · ${showInfo.date}`
-            : data.showDate}
-        </p>
-      )}
-
       {loading && (
         <p className="text-gray-400 text-center py-8">Cargando...</p>
       )}
 
-      {!loading && data?.entries.length === 0 && (
+      {!loading && entries.length === 0 && (
         <p className="text-gray-400 text-center py-8">
           No hay reservas pendientes de pago
         </p>
       )}
 
-      {!loading &&
-        data?.entries.map((entry) => (
-          <div
-            key={entry.reservationId}
-            className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col gap-1"
-          >
-            <p className="font-semibold text-black">{entry.name}</p>
-            <p className="text-xs text-gray-500">
-              ID: {entry.reservationId} · {entry.tickets}{" "}
-              {entry.tickets !== 1 ? "entradas" : "entrada"}
-              {entry.isStudent ? " · estudiante" : ""}
-            </p>
-          </div>
-        ))}
+      {!loading && entries.length > 0 && (
+        <div className="overflow-y-auto max-h-[60vh] flex flex-col gap-4 pr-1">
+          {sortedDates.map((isoDate) => {
+            const showInfo = SHOWS.find((s) => s.isoDate === isoDate);
+            const label = showInfo
+              ? `${showInfo.city} · ${showInfo.date}`
+              : isoDate;
+            return (
+              <div key={isoDate} className="flex flex-col gap-2">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide sticky top-0 bg-gray-100 rounded px-2 py-1">
+                  {label}
+                </p>
+                {grouped[isoDate].map((entry) => (
+                  <div
+                    key={entry.reservationId}
+                    className="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between gap-3"
+                  >
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <p className="font-semibold text-sm text-black truncate">{entry.name}</p>
+                      <p className="text-xs text-gray-500">
+                        ID: {entry.reservationId} · {entry.tickets}{" "}
+                        {entry.tickets !== 1 ? "entradas" : "entrada"}
+                        {entry.isStudent ? " · estudiante" : ""}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleMarkPaid(entry.mongoId)}
+                      disabled={markingId === entry.mongoId}
+                      className="shrink-0 px-3 py-1.5 rounded-lg bg-green-600 text-white text-xs font-semibold hover:bg-green-700 disabled:opacity-50 transition-colors"
+                    >
+                      {markingId === entry.mongoId ? "..." : "Pagado"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <button
         onClick={() => load(true)}
