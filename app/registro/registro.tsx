@@ -104,14 +104,13 @@ function RegistroForm() {
   const show: Show | undefined = futureShows.find(
     (s) => s.isoDate === selectedShowIso
   );
-  const isDayOf = show?.isoDate === TODAY;
-  const pricePerTicket = show ? getTicketPrice(isStudent, isDayOf, show.theater) : 0;
+  const pricePerTicket = show ? getTicketPrice(isStudent, false, show.theater) : 0;
   const total = ticketCount * pricePerTicket;
 
   const tierLabel = show
     ? isStudent
-      ? isDayOf ? "estudiante · taquilla" : "estudiante · preventa"
-      : isDayOf ? "precio normal · taquilla" : "precio normal · preventa"
+      ? "estudiante · preventa"
+      : "precio normal · preventa"
     : "";
 
   const isFormValid = !!show && !!name.trim() && ticketCount >= 1;
