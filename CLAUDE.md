@@ -29,10 +29,15 @@ No test suite is configured.
 | `/archivo/lamalditacomedia` | `app/archivo/lamalditacomedia/page.tsx` | Play details: synopsis, technical sheet, cast, gallery |
 | `/tickets` | `app/tickets/page.tsx` → `app/tickets/tickets.tsx` | Full ticket booking with PayPal integration |
 | `/registro` | `app/registro/page.tsx` → `app/registro/registro.tsx` | Internal cash-sale registration (password-gated, not in nav) |
+| `/checkin` | `app/checkin/page.tsx` → `app/checkin/checkin.tsx` | Internal door check-in tool: QR validation, taquilla sales, pending list (password-gated, not in nav) |
 | `GET /api/getMCimages` | `app/api/getMCimages/route.ts` | Returns sorted gallery images from `/public/maldita_comedia_galery/` |
 | `POST /api/reservations` | `app/api/reservations/route.ts` | Saves reservation to MongoDB, sends confirmation email |
 | `POST /api/registrations` | `app/api/registrations/route.ts` | Saves cash sale to MongoDB `caja` collection (no email sent) |
 | `POST /api/auth/registro` | `app/api/auth/registro/route.ts` | Validates `REGISTRO_PASSWORD` env var for the internal registration page |
+| `GET /api/checkin?mongoId=` | `app/api/checkin/route.ts` | Look up reservation by MongoDB `_id` in `reservations` then `caja` |
+| `POST /api/checkin` | `app/api/checkin/route.ts` | Mark reservation as `checked_in` |
+| `GET /api/checkin/pending` | `app/api/checkin/pending/route.ts` | Return pending reservations for today's show |
+| `POST /api/taquilla` | `app/api/taquilla/route.ts` | Save on-site (taquilla) sale to MongoDB `taquilla` collection |
 
 ---
 
@@ -48,6 +53,7 @@ No test suite is configured.
 | `Carrousel` | `app/carrousel.tsx` | Auto-play image slider (4 s), prev/next buttons, dot indicators, keyboard arrows |
 | `IntroSeen` | `app/animation.tsx` | Machine-UI button with explosion particle animation on click |
 | `Tickets` | `app/tickets/tickets.tsx` | Show selector, ticket count, student checkbox, name/email, PayPal buttons, confirmation modal |
+| `Checkin` | `app/checkin/checkin.tsx` | Password-gated door tool with three modes: QR scanner, taquilla form, pending list |
 
 ---
 
@@ -91,6 +97,45 @@ No test suite is configured.
 ### PayPal
 - `@paypal/react-paypal-js` — `PayPalScriptProvider` is in `app/providers.tsx`.
 - Requires env var `NEXT_PUBLIC_PAYPAL_CLIENT_ID`.
+
+---
+
+## Check-in & Taquilla System (`/checkin`)
+
+Password-gated internal page for use at the door on show day. Auth uses `CHECKIN_PASSWORD` env var via `POST /api/auth/checkin`; session stored in `sessionStorage` under key `checkin_auth`.
+
+### Three modes
+
+**Validar entrada** — QR scanner
+- Uses `getUserMedia` + `jsqr` (no third-party scanner library). A `<video>` element shows the camera feed; a hidden `<canvas>` captures frames at ~6 fps for decoding.
+- QR codes encode the MongoDB `_id` string (set when `sendPaymentConfirmed` or `sendTicketConfirmation` is called in `lib/mailer.ts`).
+- On decode: calls `GET /api/checkin?mongoId=<id>` → shows a colour-coded result card.
+- Staff presses "Marcar entrada" → `POST /api/checkin` sets `status: "checked_in"` and `checkedInAt` on the document.
+- If QR is not found: fetches and displays the pending list (see below) for manual identity check.
+
+**Registrar venta** — on-site taquilla form
+- Fields: show selector (defaults to today's show, falls back to next upcoming), ticket count (1–10), student toggle.
+- Price always uses dayOf tier (`getTicketPrice(isStudent, true, show.theater)`).
+- Submits to `POST /api/taquilla` → saved to `taquilla` MongoDB collection: `{ show, tickets, isStudent, pricePerTicket, amount, status: "confirmed", createdAt }`.
+- No name, email, or confirmation email — anonymous on-site sale.
+
+**Ver lista** — pending reservations
+- Fetches `GET /api/checkin/pending` which returns `{ entries, showDate }`.
+- `showDate` is today's show date; if no show today, the next upcoming date in `SHOWS`.
+- Read-only list for manual verification. "Actualizar lista" forces a cache bypass.
+
+### Reservation statuses
+
+| Collection | Status | Meaning |
+|---|---|---|
+| `reservations` | `pending_payment` | Bank transfer not yet confirmed |
+| `reservations` | `paid` | Payment confirmed, QR sent — valid for entry |
+| `reservations` / `caja` | `checked_in` | Already admitted (sets `checkedInAt`) |
+| `caja` | `confirmed` | Cash sale, QR sent — valid for entry |
+| `taquilla` | `confirmed` | On-site taquilla sale (no QR) |
+
+### Client-side cache
+`fetchPendingList()` in `checkin.tsx` caches the pending list in a module-level variable with a 5-minute TTL. Both `ValidarEntrada` (fallback) and `VerLista` share this cache. Pass `force=true` to bypass.
 
 ---
 
@@ -192,6 +237,7 @@ PayPal was removed temporarily from the tickets flow. To revert:
 | `country-flag-icons` | 1.5 | Unicode flag emojis for cast nationalities |
 | `@heroicons/react` | 2 | Icon set |
 | `lodash` | 4 | General utilities |
+| `jsqr` | 1 | QR code decoding from canvas frames (used in `/checkin` scanner) |
 
 ---
 
@@ -210,3 +256,4 @@ PayPal was removed temporarily from the tickets flow. To revert:
 | `BANK_IBAN` | IBAN shown in reservation confirmation emails |
 | `BANK_HOLDER` | Account holder name shown in reservation confirmation emails |
 | `REGISTRO_PASSWORD` | Password protecting the `/registro` internal cash-sale page |
+| `CHECKIN_PASSWORD` | Password protecting the `/checkin` internal ticket check-in page |
