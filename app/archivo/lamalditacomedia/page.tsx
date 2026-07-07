@@ -92,8 +92,9 @@ export default function Page() {
             <Names title={t.play.field_scenography} description="Paolo Vega y Polina Stadnikova" />
             <Names title={t.play.field_technical} description="Alejandro Olivero" />
             <Names title={t.play.field_graphic} description="Gabriela Durán" />
-            <Names title={t.play.field_photography} description="David Weiss" />
-            <Names title={t.play.field_subtitles} description="Isa Anzaldo, Birgit Bellmann y Anastasia Fink" />
+            <Names title={t.play.field_translations} description={"Isa Anzaldo y Birgit Bellmann"} />
+            <Names title={t.play.field_supertitles} description={"Anastasia Fink"} />
+
 
 
             <h2 className="text-2xl sm:text-3xl font-bold">{t.play.cast_title}</h2>
