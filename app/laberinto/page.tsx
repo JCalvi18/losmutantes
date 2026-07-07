@@ -36,7 +36,7 @@ function Person({ name, flags }: { name: string, flags: string[] }) {
 export default function Page() {
 
     const { t } = useLanguage();
-    const galleryImages = useGalleryImages("laberinto/gallery");
+    const galleryImages = useGalleryImages("laberinto/presentations");
 
 
     return (
@@ -93,12 +93,13 @@ export default function Page() {
                     {/* <Names title={t.play.field_technical} description="Leandro" /> */}
                     <Names title={t.play.field_graphic} description={t.laberinto.crew_graphic} />
                     <Names title={t.play.field_photography} description={t.laberinto.crew_photography} />
-                    <Names title={t.play.field_subtitles} description={t.laberinto.crew_subtitles} />
+                    <Names title={t.play.field_translations} description={t.laberinto.crew_translation} />
+                    <Names title={t.play.field_supertitles} description={t.laberinto.crew_subtitles} />
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-bold">{t.play.cast_title}</h2>
                 <Image
-                    src={ASSETS.nosotros3}
+                    src={ASSETS.nosotros4}
                     alt={t.play.cast_title}
                     width={1600}
                     height={900}
@@ -128,6 +129,8 @@ export default function Page() {
                     <Person name="Diego Nuñez" flags={['CO']} />
                     <Person name="Alejo Olivero" flags={['UY']} />
                     <Person name="Cecilia Paladines" flags={['EC', 'DE']} />
+                    <Person name="Pablo Palma Arcenegui" flags={['ES']} />
+                    <Person name="Mónica Rus Bono" flags={['ES']} />
                     <Person name="Polina Stadnikova" flags={['DE']} />
                     <Person name="Aldana Troncoso" flags={['AR', 'IT']} />
                     <Person name="Paolo Vega" flags={['MX']} />

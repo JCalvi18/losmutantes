@@ -12,12 +12,14 @@ export async function GET(request: Request) {
         a.pathname.localeCompare(b.pathname, undefined, { numeric: true })
       )
       .map((b) => ({
-        src: b.url,
+        // Append uploadedAt so the URL changes whenever the blob is re-uploaded,
+        // busting the browser/CDN cache on the (otherwise immutable) blob object.
+        src: `${b.url}?updated=${new Date(b.uploadedAt).getTime()}`,
         alt: b.pathname.split("/").pop() ?? "",
       }));
 
     return NextResponse.json({ images }, {
-      headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+      headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
     });
   } catch {
     return NextResponse.json({ images: [] }, { status: 200 });

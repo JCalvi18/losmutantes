@@ -5,6 +5,7 @@
 export const ASSETS = {
   logo: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/logo.png",
   nosotros3: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/nosotros3.jpg",
+  nosotros4: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/nosotros4.jpeg",
   mcPoster: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/malditaComedia/poster.jpg",
   mcNosotros: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/malditaComedia/nosotros.jpg",
   laberintoTitulo: "https://nnb5o3jxsmnxzqgf.public.blob.vercel-storage.com/laberinto/titulo.png",

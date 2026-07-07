@@ -46,3 +46,5 @@ next-env.d.ts
 skills-lock.json
 
 ./scripts/confirm-payments.ts
+
+public/

@@ -3,67 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image"
-import { Separator } from "@heroui/react";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "./i18n/LanguageContext";
-import { SHOWS } from "@/lib/shows";
 import { LaberintoTheme } from "@/lib/laberinto/laberinto-theme";
 import { ASSETS } from "@/lib/assets";
 import MazeBackground from "@/lib/laberinto/maze";
+import Carrousel from "./carrousel";
 import { useGalleryImages } from "./hooks/useGalleryImages";
-
-function PlaceDate({
-  city,
-  date,
-  theater,
-  mapsUrl,
-
-}: {
-  city: string
-  date: string
-  theater: string
-  mapsUrl: string
-}) {
-
-  const row = "flex flex-row items-center gap-2"
-
-  return (
-    <li key={city} className="flex flex-col items-center justify-center gap-2">
-      <Separator className="my-4 " />
-      <div className={`${row} text-[var(--lb-orange)]`}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
-        </svg>
-
-        <span>{city}</span>
-      </div>
-      <div className={`${row} text-[var(--lb-yellow)]`}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-        </svg>
-
-        <Link href={mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 underline sm:no-underline sm:hover:underline active:opacity-60 transition-opacity">
-          <span className="font-medium">{theater}</span>
-          <ArrowTopRightOnSquareIcon className="size-4 shrink-0" />
-        </Link>
-      </div>
-      <div className={`${row} text-[var(--lb-blue)]`}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-
-        <span className="font-medium">{date}</span>
-      </div>
-    </li>
-  )
-}
 
 function Home() {
   const { t } = useLanguage();
 
 
   const sponsorImages = useGalleryImages("laberinto/sponsors");
+  const galleryImages = useGalleryImages("laberinto/presentations");
 
   // Maze finishes at 2000ms. Background fades in at 2800ms (800ms buffer),
   // content elements follow sequentially every ~250ms starting at 3100ms (+1s vs before).
@@ -134,24 +86,22 @@ function Home() {
           >
             {t.home.cta}
           </Link>
-          <Link
+          {/* <Link
             href="/tickets"
             className="border rounded-xl border-[var(--lb-orange)] bg-[var(--lb-orange)] text-[var(--lb-background)] px-6 py-2 hover:opacity-80 transition-opacity"
           >
             {t.nav.tickets}
-          </Link>
+          </Link> */}
         </div>
 
-        <div className="lb-fade-in flex flex-col items-center" style={delay(4850)}>
-          <h3 className="text-[var(--lb-orange)] text-3xl sm:text-3xl md:text-5xl mb-2">{t.home.dates_title}</h3>
-          <ul className="space-y-2">
-            {SHOWS.map(({ city, date, theater, link }) => {
-              const theaterDisplay = theater === "university" ? t.home.university : theater;
-              return (
-                <PlaceDate key={`${date}-${city}`} city={city} theater={theaterDisplay} date={date} mapsUrl={link} />
-              );
-            })}
-          </ul>
+        <div className="lb-fade-in flex flex-col items-center text-center" style={delay(4850)}>
+          <h3 className="text-[var(--lb-orange)] text-3xl sm:text-3xl md:text-5xl mb-2">{t.home.break_title}</h3>
+          <h4 className="text-[var(--lb-yellow)] text-xl sm:text-2xl md:text-3xl">{t.home.thanks_title}</h4>
+        </div>
+
+        <div className="lb-fade-in flex flex-col items-center w-full gap-4" style={delay(5100)}>
+          <h3 className="text-[var(--lb-orange)] text-3xl sm:text-3xl md:text-5xl">{t.home.gallery_title}</h3>
+          <Carrousel images={galleryImages} className="w-full" />
         </div>
 
       </section>

@@ -16,6 +16,9 @@
       "subtitles": "Teatro en Español con subtítulos en Inglés y Alemán",
       "cta": "Conoce más sobre la Obra",
       "dates_title": "Fechas y lugares",
+      "break_title": "Estaremos en pausa",
+      "thanks_title": "Gracias por venir a nuestras presentaciones",
+      "gallery_title": "Galería",
       "university": "Universidad del Saarland"
     },
     "footer": {
@@ -66,7 +69,7 @@
       "field_graphic": "Diseño gráfico",
       "field_photography": "Fotografía",
       "field_translations": "Traducciones",
-      "field_subtitles": "Subtítulos"
+      "field_supertitles": "Operador de supertítulos"
     },
     "lamalditacomedia": {
       "title": "La Divina Tragedia o La Maldita Comedia",
@@ -91,14 +94,15 @@
       "crew_production": "Diego Nuñez, Cecilia Paladines, Polina Stadnikova y Jorge Calvimontes",
       "crew_assistant_direction": "Cecilia Paladines",
       "crew_choreography": "Silvina Holender",
-      "crew_lighting": "Jorge Calvimontes, Polina Stadniko, vaLeandro Martínez y Alejo Olivero",
+      "crew_lighting": "Jorge Calvimontes, Polina Stadniko, Leandro Martínez y Alejo Olivero",
       "crew_marketing": "Cecilia Paladines, Pilar Morales, Nikolaos Engonopoulos y Simon Vergara",
       "crew_costumes": "Veronica Gimenez, Silvina Holender, Luciana Dos Ramos y Pahola González Tovar",
       "crew_scenography": "Paolo Vega y Mercedes Ruiz",
       "crew_sound": "Silvina Holender, Veronica Gimenez, Alejo Olivero y Jorge Calvimontes",
       "crew_graphic": "Gabriela Durán",
       "crew_photography": "Zippo Zimmermann",
-      "crew_subtitles": "Isa Anzaldo, Birgit Bellmann y Mónica Rus Bono"
+      "crew_translation": "Isa Anzaldo y Birgit Bellmann",
+      "crew_subtitles": "Mónica Rus Bono y Pablo Palma Arcenegui"
     },
     "sponsors": {
       "title": "Nuestros patrocinadores"
@@ -186,6 +190,9 @@
       "subtitles": "Theater in Spanish with subtitles in English and German",
       "cta": "Learn more about the Play",
       "dates_title": "Dates and Venues",
+      "break_title": "We will be on a break",
+      "thanks_title": "Thanks for coming to our presentations",
+      "gallery_title": "Gallery",
       "university": "Saarland University"
     },
     "footer": {
@@ -236,7 +243,7 @@
       "field_technical": "Technical Assistance",
       "field_graphic": "Graphic Design",
       "field_photography": "Photography",
-      "field_subtitles": "Subtitles"
+      "field_supertitles": "Supertitles operator"
     },
     "lamalditacomedia": {
       "title": "The Divine Tragedy or The Damned Comedy",
@@ -268,7 +275,8 @@
       "crew_sound": "Silvina Holender, Veronica Gimenez, Alejo Olivero and Jorge Calvimontes",
       "crew_graphic": "Gabriela Durán",
       "crew_photography": "Zippo Zimmermann",
-      "crew_subtitles": "Isa Anzaldo, Birgit Bellmann and Mónica Rus Bono"
+      "crew_translation": "Isa Anzaldo y Birgit Bellmann",
+      "crew_subtitles": "Mónica Rus Bono y Pablo Palma Arcenegui"
     },
     "sponsors": {
       "title": "Our sponsors"
@@ -356,6 +364,9 @@
       "subtitles": "Theater auf Spanisch mit Untertiteln auf Englisch und Deutsch",
       "cta": "Mehr über das Stück",
       "dates_title": "Termine und Spielorte",
+      "break_title": "Wir machen eine Pause",
+      "thanks_title": "Danke, dass ihr zu unseren Aufführungen gekommen seid",
+      "gallery_title": "Galerie",
       "university": "Universität Des Saarlandes"
     },
     "footer": {
@@ -406,7 +417,7 @@
       "field_technical": "Technische Assistenz",
       "field_graphic": "Grafikdesign",
       "field_photography": "Fotografie",
-      "field_subtitles": "Untertitel"
+      "field_supertitles": "Übertitel-Operator"
     },
     "lamalditacomedia": {
       "title": "Die Göttliche Tragödie oder Die Verdammte Komödie",
@@ -438,7 +449,8 @@
       "crew_sound": "Silvina Holender, Veronica Gimenez, Alejo Olivero und Jorge Calvimontes",
       "crew_graphic": "Gabriela Durán",
       "crew_photography": "Zippo Zimmermann",
-      "crew_subtitles": "Isa Anzaldo, Birgit Bellmann und Mónica Rus Bono"
+      "crew_translation": "Isa Anzaldo y Birgit Bellmann",
+      "crew_subtitles": "Mónica Rus Bono y Pablo Palma Arcenegui"
     },
     "sponsors": {
       "title": "Unsere Sponsoren"
