@@ -17,6 +17,13 @@ interface ShowStats {
   taquilla: { count: number; tickets: number; amount: number };
 }
 
+interface SaleDoc {
+  tickets: number;
+  amount: number;
+  status?: string;
+  show?: { isoDate?: string };
+}
+
 function empty() {
   return { count: 0, tickets: 0, amount: 0 };
 }
@@ -65,12 +72,12 @@ async function main() {
 
   // ── reservations (online / bank transfer) ────────────────────────────────
   const reservationDocs = await db
-    .collection("reservations")
+    .collection<SaleDoc>("reservations")
     .find({ "show.isoDate": { $in: showDates } })
     .toArray();
 
   for (const doc of reservationDocs) {
-    const s = statsMap.get(doc.show?.isoDate);
+    const s = doc.show?.isoDate ? statsMap.get(doc.show.isoDate) : undefined;
     if (!s) continue;
     if (doc.status === "pending_payment") add(s.reservations.pending, doc);
     else if (doc.status === "paid") add(s.reservations.paid, doc);
@@ -79,12 +86,12 @@ async function main() {
 
   // ── caja (cash sales via /registro) ─────────────────────────────────────
   const cajaDocs = await db
-    .collection("caja")
+    .collection<SaleDoc>("caja")
     .find({ "show.isoDate": { $in: showDates } })
     .toArray();
 
   for (const doc of cajaDocs) {
-    const s = statsMap.get(doc.show?.isoDate);
+    const s = doc.show?.isoDate ? statsMap.get(doc.show.isoDate) : undefined;
     if (!s) continue;
     if (doc.status === "checked_in") add(s.caja.checkedIn, doc);
     else add(s.caja.confirmed, doc);
@@ -92,12 +99,12 @@ async function main() {
 
   // ── taquilla (on-site sales via /checkin) ────────────────────────────────
   const taquillaDocs = await db
-    .collection("taquilla")
+    .collection<SaleDoc>("taquilla")
     .find({ "show.isoDate": { $in: showDates } })
     .toArray();
 
   for (const doc of taquillaDocs) {
-    const s = statsMap.get(doc.show?.isoDate);
+    const s = doc.show?.isoDate ? statsMap.get(doc.show.isoDate) : undefined;
     if (!s) continue;
     add(s.taquilla, doc);
   }
