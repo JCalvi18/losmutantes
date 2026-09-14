@@ -46,6 +46,14 @@
       "collaboration_title": "Colaboración y expansión",
       "collaboration_desc": "Participaremos en festivales y giras, y colaboraremos con otros grupos para tejer redes culturales internacionales."
     },
+    "partnerPresentations": {
+      "title": "Próximas presentaciones invitadas",
+      "intro": "Además de nuestras propias funciones, apoyamos y difundimos el trabajo de otros grupos de teatro. Aquí encontrarás las próximas presentaciones de compañías invitadas.",
+      "empty": "No hay próximas presentaciones de grupos invitados por el momento.",
+      "date_label": "Fecha",
+      "venue_label": "Lugar",
+      "info_link": "Más información"
+    },
     "play": {
       "synopsis_title": "Sinopsis",
       "technical_title": "Ficha Técnica",
@@ -220,6 +228,14 @@
       "collaboration_title": "Collaboration and expansion",
       "collaboration_desc": "We will participate in festivals and tours, and collaborate with other groups to build international cultural networks."
     },
+    "partnerPresentations": {
+      "title": "Upcoming Guest Presentations",
+      "intro": "Besides our own shows, we support and promote the work of other theater groups. Here you'll find upcoming presentations by guest companies.",
+      "empty": "There are no upcoming guest-group presentations at the moment.",
+      "date_label": "Date",
+      "venue_label": "Venue",
+      "info_link": "More information"
+    },
     "play": {
       "synopsis_title": "Synopsis",
       "technical_title": "Technical Sheet",
@@ -393,6 +409,14 @@
       "sustainability_desc": "Wir möchten Kontinuität und Erneuerung bewahren: neue Stimmen, neue Ideen und Qualität in jeder Saison.",
       "collaboration_title": "Zusammenarbeit und Expansion",
       "collaboration_desc": "Wir werden an Festivals und Tourneen teilnehmen und mit anderen Gruppen zusammenarbeiten, um internationale Kulturnetzwerke aufzubauen."
+    },
+    "partnerPresentations": {
+      "title": "Kommende Gastauftritte",
+      "intro": "Neben unseren eigenen Aufführungen unterstützen und fördern wir die Arbeit anderer Theatergruppen. Hier findet ihr die kommenden Auftritte eingeladener Gruppen.",
+      "empty": "Derzeit sind keine Auftritte eingeladener Gruppen geplant.",
+      "date_label": "Datum",
+      "venue_label": "Ort",
+      "info_link": "Weitere Informationen"
     },
     "play": {
       "synopsis_title": "Inhalt",
