@@ -20,7 +20,7 @@ export const PARTNER_SHOWS: PartnerShow[] = [
     venue: "TiV – Theater im Viertel",
     date: "15.09.2026 -- 19:30",
     isoDate: "2026-09-15",
-    link: "https://dastiv.de/karten-crisalida",
+    link: "https://dastiv.de/2026-09-15_crisalida/",
     imageUrl: ASSETS.crisalidaPoster,
     description: {
       es: "Entre cortinas, recuerdos suspendidos y jaulas geométricas, CRISÁLIDA despliega una noche de teatro poético sobre el crecer, la violencia familiar y la búsqueda de una identidad propia. Función en español con subtítulos en alemán.",
@@ -35,7 +35,7 @@ export const PARTNER_SHOWS: PartnerShow[] = [
     venue: "TiV – Theater im Viertel",
     date: "16.09.2026 -- 19:30",
     isoDate: "2026-09-16",
-    link: "https://dastiv.de/karten-crisalida",
+    link: "https://dastiv.de/2026-09-15_crisalida/",
     imageUrl: ASSETS.crisalidaPoster,
     description: {
       es: "Entre cortinas, recuerdos suspendidos y jaulas geométricas, CRISÁLIDA despliega una noche de teatro poético sobre el crecer, la violencia familiar y la búsqueda de una identidad propia. Función en español con subtítulos en alemán.",
@@ -50,7 +50,7 @@ export const PARTNER_SHOWS: PartnerShow[] = [
     venue: "TiV – Theater im Viertel",
     date: "27.09.2026 -- 17:00",
     isoDate: "2026-09-27",
-    link: "https://dastiv.de/karten-la-tigresa",
+    link: "https://dastiv.de/2026-09-27_la-tigresa-2/",
     imageUrl: ASSETS.tigresaPoster,
     description: {
       es: "Esta antiquísima historia, tan absurda como humorística, dice Dario Fo haberla escuchado de un cantante callejero cerca de Shanghái: un soldado herido es curado por una tigresa, con quien forma una insólita comunidad de supervivencia. Un monólogo grotesco y cómico interpretado por Juanba Ybañez sobre la guerra, la humanidad y la convivencia con lo extraño.",
@@ -65,7 +65,7 @@ export const PARTNER_SHOWS: PartnerShow[] = [
     venue: "TiV – Theater im Viertel",
     date: "13.10.2026 -- 19:30",
     isoDate: "2026-10-13",
-    link: "https://dastiv.de/karten-revuelto-de-gentuza",
+    link: "https://dastiv.de/2026-10-13_revuelto-de-gentuza/",
     imageUrl: ASSETS.revueltoPoster,
     description: {
       es: "Teatro, danza, clown, títeres… humor de todos los colores, menos el blanco. Aviso importante: aunque es bien sabido que la maldad es difícil de contener, la Compañía en Obras tiene el honor de anunciar que ha logrado encerrar a la mala gente en un mismo lugar y a la misma hora, para reírse en su propia cara.",
@@ -80,7 +80,7 @@ export const PARTNER_SHOWS: PartnerShow[] = [
     venue: "TiV – Theater im Viertel",
     date: "14.10.2026 -- 19:30",
     isoDate: "2026-10-14",
-    link: "https://dastiv.de/karten-revuelto-de-gentuza",
+    link: "https://dastiv.de/2026-10-13_revuelto-de-gentuza/",
     imageUrl: ASSETS.revueltoPoster,
     description: {
       es: "Teatro, danza, clown, títeres… humor de todos los colores, menos el blanco. Aviso importante: aunque es bien sabido que la maldad es difícil de contener, la Compañía en Obras tiene el honor de anunciar que ha logrado encerrar a la mala gente en un mismo lugar y a la misma hora, para reírse en su propia cara.",
